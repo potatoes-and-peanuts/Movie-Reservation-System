@@ -24,7 +24,7 @@
     <ClCompile Include="play.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="view.cpp">
+    <ClCompile Include="movie_theater.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
   </ItemGroup>

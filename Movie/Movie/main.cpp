@@ -3,7 +3,8 @@
 int main(void) {
 	SetConsoleView();
 	DrawReadyScreen();
-	while (true)
-		ReadyScreen();
+	
+	movie_theater();
+
 	return 0;
 }

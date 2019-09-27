@@ -5,7 +5,6 @@
 #include <cstdlib>
 #include <ctime>
 
-
 #define GAMESTART 0		//시작화면에서 선택했을 때 넘어가는 값
 #define HOWTOPLAY 1
 #define QUIT 2
@@ -20,18 +19,13 @@
 
 using namespace std;
 
-
-void play();
-void view();
-
-void intro();
+void SetConsoleView();
 void gotoxy(int x, int y);
-
-void DrawStartGame();
+int ReadyScreen();
 void DrawReadyScreen();
 void DrawUserCursor(int& x);
-void SetConsoleView();
+void intro();
 
-int ReadyScreen();
-void DrawChoiceScreen();
+void movie_theater();
 
+void play();

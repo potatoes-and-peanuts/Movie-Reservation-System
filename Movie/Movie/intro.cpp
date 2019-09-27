@@ -16,10 +16,9 @@ void gotoxy(int x, int y) {
 void DrawUserCursor(int& x) { //커서 그리기
 	if (x <= 0) x = 0;
 	else if (x > 2) x = 1;
-	gotoxy(32, 30 + x);
+	gotoxy(32, 15 + x);
 	cout << "▶";
 }
-
 
 void DrawReadyScreen() {
 	system("cls");
@@ -73,60 +72,9 @@ void DrawReadyScreen() {
 	for (i = 0; i < 86; i++)    //─ 출력
 		cout << a << b[1];
 	cout << a << b[5] << endl;   // ┘출력
-	Sleep(2000);
+	Sleep(1000);
 	system("cls");
 	
-}
-
-void DrawStartGame() {
-	system("cls");
-	//play();
-}
-
-
-
-void DrawChoiceScreen() {
-	system("cls");
-
-	int i, j;
-	unsigned char a = 0xa6;
-	unsigned char b[7];
-
-	for (i = 1; i < 7; i++)
-		b[i] = 0xa0 + i;
-
-	gotoxy(20, 50);
-	cout << a << b[3];   //┌ 출력
-	for (i = 0; i < 86; i++)
-		cout << a << b[1];   // ─ 출력
-	cout << a << b[4] << endl;   // ┐출력
-
-	//빈줄
-	for (i = 0; i < 18; i++) {
-		cout << a << b[2];
-		for (j = 0; j < 23; j++)
-			cout << "  ";
-
-		for (j = 0; j < 20; j++)
-			cout << "  ";
-		cout << a << b[2] << endl;
-	}
-
-	//빈줄
-	for (i = 0; i < 18; i++) {
-		cout << a << b[2];
-		for (j = 0; j < 23; j++)
-			cout << "  ";
-
-		for (j = 0; j < 20; j++)
-			cout << "  ";
-		cout << a << b[2] << endl;
-	}
-
-	cout << a << b[6];   // └출력
-	for (i = 0; i < 86; i++)    //─ 출력
-		cout << a << b[1];
-	cout << a << b[5] << endl;   // ┘출력
 }
 
 int ReadyScreen() { //시작화면
@@ -135,8 +83,7 @@ int ReadyScreen() { //시작화면
 	int key = 0;
 	while(true) {
 
-		
-		DrawChoiceScreen();
+		movie_theater();
 		DrawUserCursor(x);
 
 		key = _getch();
