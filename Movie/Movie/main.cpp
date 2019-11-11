@@ -2,7 +2,7 @@
 
 int main(void) {
 	SetConsoleView();
-	DrawReadyScreen();
+	ReadyScreen();
 	
 	movie_theater();
 

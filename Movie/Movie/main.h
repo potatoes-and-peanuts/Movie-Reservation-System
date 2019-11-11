@@ -22,10 +22,12 @@ using namespace std;
 void SetConsoleView();
 void gotoxy(int x, int y);
 int ReadyScreen();
-void DrawReadyScreen();
+void DrawLineScreen();
 void DrawUserCursor(int& x);
 void intro();
 
 void movie_theater();
+void DrawLineTop();
+void DrawLineBottom();
 
 void play();
