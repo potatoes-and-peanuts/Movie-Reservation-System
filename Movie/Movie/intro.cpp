@@ -12,12 +12,6 @@ void gotoxy(int x, int y) {
 	SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), Pos);
 }
 
-void DrawUserCursor(int& x) { //커서 그리기
-	if (x <= 0) x = 0;
-	else if (x > 2) x = 1;
-	gotoxy(40, 15 + x);
-	cout << "▶";
-}
 
 void DrawStartScreen() {
 	
