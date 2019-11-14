@@ -1,6 +1,5 @@
 ﻿#include "main.h"
 
-
 void DrawLineTop() { // '영화관 선택'와 같은 글씨가 있는 박스
 	int i, j;
 	unsigned char a = 0xa6;
@@ -43,7 +42,7 @@ void DrawLineBottom() { // '영화관 선택'와 같은 글씨 아래에 있는 
 
 	cout << a << b[4] << endl;   // ┐출력
 
-	for (i = 0; i < 25; i++) {
+	for (i = 0; i < 30; i++) {
 		cout << a << b[2];
 		for (j = 0; j < 43; j++) //빈줄
 			cout << "  ";
@@ -63,6 +62,8 @@ void movie_theater() {
 	gotoxy(37,3);
 	cout << "☆영화관 선택☆" << endl;
 	DrawLineBottom();
+	gotoxy(30, 25);
+	cout << "□" << endl;
 	Sleep(1000);
 	//system("cls");
 }
