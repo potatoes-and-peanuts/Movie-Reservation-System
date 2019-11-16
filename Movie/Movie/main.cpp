@@ -2,9 +2,7 @@
 
 int main(void) {
 	SetConsoleView();
-	//intro();
-	
-	choice_theater();
-	
+	intro();
+	theater();
 	return 0;
 }

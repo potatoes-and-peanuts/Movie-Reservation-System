@@ -1,80 +1,11 @@
 ﻿#include "main.h"
 
-void DrawLineTop() { // '영화관 선택'와 같은 글씨가 있는 박스
-	int i, j;
-	unsigned char a = 0xa6;
-	unsigned char b[7];
+int theater() {
+	string theater1;
+	string theater2;
 
-	for (i = 1; i < 7; i++)
-		b[i] = 0xa0 + i;
-
-	cout << a << b[3];   //┌ 출력
-	for (i = 0; i < 86; i++)
-		cout << a << b[1];   // ─ 출력
-	cout << a << b[4] << endl;   // ┐출력
-
-	//빈줄
-	for (i = 0; i < 5; i++) {
-		cout << a << b[2];
-		for (j = 0; j < 43; j++)
-			cout << "  ";
-		cout << a << b[2] << endl;
-	}
-
-	cout << a << b[6];   // └출력
-	for (i = 0; i < 86; i++)    //─ 출력
-		cout << a << b[1];
-	cout << a << b[5] << endl;   // ┘출력 
-}
-
-void DrawLineBottom() { // '영화관 선택'와 같은 글씨 아래에 있는 박스 (이벤트 발생하는 구간)
-	int i, j;
-	unsigned char a = 0xa6;
-	unsigned char b[7];
-
-	for (i = 1; i < 7; i++)
-		b[i] = 0xa0 + i;
-
-	gotoxy(0, 7);
-	cout << a << b[3];   //┌ 출력
-	for (i = 0; i < 86; i++)
-		cout << a << b[1];   // ─ 출력
-
-	cout << a << b[4] << endl;   // ┐출력
-
-	for (i = 0; i < 30; i++) {
-		cout << a << b[2];
-		for (j = 0; j < 43; j++) //빈줄
-			cout << "  ";
-		cout << a << b[2] << endl;
-	}
-
-	cout << a << b[6];   // └출력
-	for (i = 0; i < 86; i++)    //─ 출력
-		cout << a << b[1];
-	cout << a << b[5] << endl;   // ┘출력
-}
-
-void DrawUserCursor(int& x) { //커서 그리기
-	if (x > 24) x = 0;
-	else if (x < 0) x = 24;
-	gotoxy(50, 10 + x);
-	cout << "◀";
-}
-
-void DrawUserCursor2(int& x) { //커서 그리기
-	if (x > 12) x = 0;
-	else if (x < 0) x = 12;
-	gotoxy(47, 15 + x);
-	cout << "◀";
-}
-
-
-int choice_theater() {
-	//system("cls");
-
-	string theater1[] = { "서울", "경기", "인천", "강원", "대전/충청", "대구", "부산/울산", "경상", "광주/전라/제주" };
-	string theater2[9][5] = { {"강남", "강변", "구로", "천호", "홍대"},
+	string local1[] = { "서울", "경기", "인천", "강원", "대전/충청", "대구", "부산/울산", "경상", "광주/전라/제주" };
+	string local2[9][5] = { {"강남", "강변", "구로", "천호", "홍대"},
 			{"구리", "김포",  "시흥", "수원", "용인"},
 			{"계양", "청라", "인천", "부평", "연수역"},
 			{"강릉", "원주", "인제", "춘천", "춘천명동"},
@@ -100,7 +31,7 @@ int choice_theater() {
 
 		for (int i = 0; i < 9; i++) {
 			gotoxy(35, 10 + (i * 3));
-			cout << theater1[i] << endl;
+			cout << local1[i] << endl;
 		}
 	
 		DrawUserCursor(x);
@@ -120,33 +51,42 @@ int choice_theater() {
 			switch (x / 3) {
 			case 0:
 				j = 0;
+				theater1 = local1[0];
 				break;
 			case 1:
 				j = 1;
+				theater1 = local1[1];
 				break;
 			case 3:
 				j = 3;
+				theater1 = local1[2];
 				break;
 			case 4:
 				j = 4;
+				theater1 = local1[3];
 				break;
 			case 5:
 				j = 5;
+				theater1 = local1[4];
 				break;
 			case 6:
 				j = 6;
+				theater1 = local1[5];
 				break;
 			case 7:
-				j = 7;
+				theater1 = local1[6];
 				break;
 			case 8:
 				j = 8;
+				theater1 = local1[7];
 				break;
 			}
 			break;
 		}
 	}
+
 	system("cls");
+
 	DrawLineTop();
 	gotoxy(38, 2);
 	cout << "☆영화관 선택☆" << endl;
@@ -159,7 +99,7 @@ int choice_theater() {
 
 		for (int i = 0; i < 5; i++) {
 			gotoxy(42, 15 + (i * 3));
-			cout << theater2[j][i] << endl;
+			cout << local2[j][i] << endl;
 		}
 		
 		DrawUserCursor2(x);
@@ -175,35 +115,40 @@ int choice_theater() {
 		}
 
 		if (key == ENTER) {
-			switch (x/3) {
-			case 0:
-				gotoxy(55, 11);
-				cout << "성공" << endl;
-				break;
-			case 1:
-				gotoxy(55, 11);
-				cout << "성공2" << endl;
-				break;
-			case 2:
-				gotoxy(55, 11);
-				cout << "성공" << endl;
-				break;
-			case 3:
-				gotoxy(55, 11);
-				cout << "성공2" << endl;
-				break;
-			case 4:
-				gotoxy(55, 11);
-				cout << "성공" << endl;
-				break;
-			case 5:
-				gotoxy(55, 11);
-				cout << "성공2" << endl;
+				switch (x / 3) {
+				case 0:
+					theater2 = local2[j][0];
+					gotoxy(50, 11);
+					cout << local2[j][0] << endl;
+					break;
+				case 1:
+					theater2 = local2[j][1];
+					gotoxy(50, 11);
+					cout << local2[j][1] << endl;
+					break;
+				case 2:
+					theater2 = local2[j][2];
+					gotoxy(50, 11);
+					cout << local2[j][2] << endl;
+					break;
+				case 3:
+					theater2 = local2[j][3];
+					gotoxy(50, 11);
+					cout << local2[j][3] << endl;
+					break;
+				case 4:
+					theater2 = local2[j][4];
+					gotoxy(50, 11);
+					cout << local2[j][4] << endl;
+					break;
+				case 5:
+					theater2 = local2[j][5];
+					gotoxy(50, 11);
+					cout << local2[j][5] << endl;
+					break;
+				}
 				break;
 			}
-			break; //지워야함
 		}
-	}
-	
 	return 1;
 }

@@ -1,21 +1,9 @@
 #include "main.h"
 
-void SetConsoleView() {
-	system("mode con:cols=90 lines=40");
-	system("Title Movie Reservation Program");
-}
+int intro() { //시작화면
+	system("cls");
 
-void gotoxy(int x, int y) {
-	COORD Pos;
-	Pos.X = x;
-	Pos.Y = y;
-	SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), Pos);
-}
-
-
-void DrawStartScreen() {
-	
-	int i, j, x=0;
+	int i, j, x = 0;
 	unsigned char a = 0xa6;
 	unsigned char b[7];
 
@@ -47,9 +35,9 @@ void DrawStartScreen() {
 	gotoxy(6, 5);
 	cout << "＊" << a << b[1] << endl;
 	gotoxy(11, 6);
-	cout <<"＼" << endl;
+	cout << "＼" << endl;
 	gotoxy(13, 7);
-	cout << a << b[1] << " ＊" << endl;// 
+	cout << a << b[1] << " ＊" << endl;
 	gotoxy(5, 7);
 	cout << "|" << endl;
 	gotoxy(5, 8);
@@ -61,23 +49,21 @@ void DrawStartScreen() {
 	gotoxy(5, 11);
 	cout << "|" << endl;
 	gotoxy(6, 12);
-	cout << a << b[1] << "＊" << a << b[1]<< endl;
-	//
+	cout << a << b[1] << "＊" << a << b[1] << endl;
 	gotoxy(10, 9);
 	cout << "＼" << endl;
 	gotoxy(13, 10);
-	cout << a << b[1] << " ＊" << endl; //
+	cout << a << b[1] << " ＊" << endl;
 	gotoxy(9, 10);
 	cout << " ＊" << endl;//
 	gotoxy(10, 11);
 	cout << "|" << endl;
-	//
 	gotoxy(17, 6);
 	cout << "/" << endl;
 	gotoxy(17, 9);
 	cout << "/" << endl;
 	gotoxy(19, 5);
-	cout <<  a << b[1] << "  ＊" << endl;
+	cout << a << b[1] << "  ＊" << endl;
 	gotoxy(23, 6);
 	cout << "|" << endl;
 	gotoxy(23, 7);
@@ -94,7 +80,6 @@ void DrawStartScreen() {
 	cout << a << b[1] << endl;
 	gotoxy(19, 12);
 	cout << a << b[1] << "＊" << endl;
-	//
 	gotoxy(18, 9);
 	cout << "|" << endl;
 	gotoxy(18, 10);
@@ -133,7 +118,6 @@ void DrawStartScreen() {
 	cout << "/" << endl;
 	gotoxy(38, 11);
 	cout << "/" << endl;
-	/////////////////////
 	gotoxy(37, 12);
 	cout << "＊ " << endl;
 	gotoxy(36, 12);
@@ -145,7 +129,7 @@ void DrawStartScreen() {
 	gotoxy(33, 12);
 	cout << a << b[1] << endl;
 	gotoxy(29, 12);
-	cout << "＊" << a << b[1]  << endl;
+	cout << "＊" << a << b[1] << endl;
 	gotoxy(28, 11);
 	cout << "＼" << endl;
 	gotoxy(27, 10);
@@ -212,12 +196,10 @@ void DrawStartScreen() {
 	cout << "/" << endl;
 	gotoxy(55, 12);
 	cout << "＊" << endl;
-	//
 	gotoxy(52, 12);
 	cout << a << b[1] << endl;
 	gotoxy(49, 12);
-	cout << "＊ "  << a << b[1]  << endl;
-	//
+	cout << "＊ " << a << b[1] << endl;
 	gotoxy(48, 11);
 	cout << "＼" << endl;
 	gotoxy(46, 10);
@@ -230,7 +212,7 @@ void DrawStartScreen() {
 	cout << "|" << endl;
 	gotoxy(42, 8);
 	cout << " ＊" << endl;
-	///////////////V완성
+	// V완성
 	Sleep(700);
 
 	gotoxy(64, 5);
@@ -257,7 +239,6 @@ void DrawStartScreen() {
 	cout << a << b[1] << endl;
 	gotoxy(64, 12);
 	cout << a << b[1] << endl;
-	//
 	gotoxy(63, 6);
 	cout << "|" << endl;
 	gotoxy(63, 7);
@@ -297,7 +278,6 @@ void DrawStartScreen() {
 	cout << a << b[1] << endl;
 	gotoxy(73, 6);
 	cout << "＊" << a << b[1] << endl;
-	
 	gotoxy(74, 7);
 	cout << "|" << endl;
 	gotoxy(75, 8);
@@ -312,7 +292,6 @@ void DrawStartScreen() {
 	cout << a << b[1] << endl;
 	gotoxy(80, 8);
 	cout << "＊" << endl;
-	/////////////
 	gotoxy(81, 9);
 	cout << "|" << endl;
 	gotoxy(79, 9);
@@ -325,8 +304,6 @@ void DrawStartScreen() {
 	cout << "＊" << endl;
 	gotoxy(74, 10);
 	cout << "|" << endl;
-
-
 	gotoxy(75, 11);
 	cout << a << b[1] << endl;
 	gotoxy(77, 11);
@@ -355,7 +332,6 @@ void DrawStartScreen() {
 	cout << a << b[1] << endl;
 	gotoxy(72, 12);
 	cout << a << b[1] << endl;
-
 	gotoxy(71, 5);
 	cout << "＊" << endl;
 	gotoxy(71, 6);
@@ -372,14 +348,10 @@ void DrawStartScreen() {
 	cout << "|" << endl;
 	gotoxy(71, 12);
 	cout << "＊" << endl;
-
+	//E완성
 	Sleep(2000);
-	
-}
 
-int intro() { //시작화면
 	system("cls");
-	DrawStartScreen();
-	system("cls");
+
 	return 0;
 }

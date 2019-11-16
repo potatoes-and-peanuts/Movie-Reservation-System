@@ -35,15 +35,16 @@
 
 using namespace std;
 
+//view.cpp
 void SetConsoleView();
 void gotoxy(int x, int y);
-int intro();
-void DrawStartScreen();
-
-void DrawUserCursor(int& x);
 void DrawLineTop();
 void DrawLineBottom();
+void DrawUserCursor(int& x);
+void DrawUserCursor2(int& x);
 
-void play();
+//intro.cpp
+int intro();
 
-int choice_theater();
+//theater.cpp
+int theater();
