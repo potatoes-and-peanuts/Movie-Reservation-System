@@ -5,10 +5,6 @@
 #include <cstdlib>
 #include <ctime>
 
-#define GAMESTART 0		//시작화면에서 선택했을 때 넘어가는 값
-#define HOWTOPLAY 1
-#define QUIT 2
-
 #define UP 72		   // 우측방향키
 #define DOWN 80		   // 하측방향키
 #define LEFT   75      // 좌측방향키 
@@ -16,21 +12,6 @@
 #define ENTER 13
 
 #define COL                   GetStdHandle(STD_OUTPUT_HANDLE)        // 콘솔창의 핸들정보 받기
-
-using namespace std;
-
-void SetConsoleView();
-void gotoxy(int x, int y);
-int intro();
-void DrawStartScreen();
-void DrawUserCursor(int& x);
-//void intro();
-
-void movie_theater();
-void DrawLineTop();
-void DrawLineBottom();
-
-void play();
 
 // ** 무채색 **
 #define BLACK                SetConsoleTextAttribute(COL, 0x0000);        // 검정색
@@ -51,3 +32,18 @@ void play();
 #define HIGH_GREEN       SetConsoleTextAttribute(COL, 0x000a);        // 연두색
 #define SKY_BLUE           SetConsoleTextAttribute(COL, 0x000b);        // 하늘색
 #define PLUM                SetConsoleTextAttribute(COL, 0x000d);        // 자주색
+
+using namespace std;
+
+void SetConsoleView();
+void gotoxy(int x, int y);
+int intro();
+void DrawStartScreen();
+
+void DrawUserCursor(int& x);
+void DrawLineTop();
+void DrawLineBottom();
+
+void play();
+
+int choice_theater();
