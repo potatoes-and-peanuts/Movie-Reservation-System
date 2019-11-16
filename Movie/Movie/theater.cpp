@@ -114,7 +114,9 @@ int choice_theater() {
 			x -= 3;
 			break;
 		}
+
 		if (key == ENTER) {
+
 			switch (x / 3) {
 			case 0:
 				j = 0;
@@ -140,14 +142,11 @@ int choice_theater() {
 			case 8:
 				j = 8;
 				break;
-			case 9:
-				j = 9;
-				break;
 			}
 			break;
 		}
 	}
-
+	system("cls");
 	DrawLineTop();
 	gotoxy(38, 2);
 	cout << "☆영화관 선택☆" << endl;
