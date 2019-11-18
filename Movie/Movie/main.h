@@ -35,6 +35,7 @@
 
 using namespace std;
 
+
 //view.cpp
 void SetConsoleView();
 void gotoxy(int x, int y);
@@ -48,3 +49,8 @@ int intro();
 
 //theater.cpp
 int theater();
+
+//CtheaterObject.cpp
+void CtheaterObject();
+
+void join();
