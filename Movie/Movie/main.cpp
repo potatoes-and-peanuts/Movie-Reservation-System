@@ -73,42 +73,42 @@ void join() {
 	
 		DrawLineBottom();
 
-		gotoxy(26, 10);
+		gotoxy(30, 10);
 		cout << "생년월일(6자리) >>";
-		gotoxy(45, 10);
+		gotoxy(49, 10);
 		cin >> birth;
 
-		gotoxy(26, 12);
+		gotoxy(30, 12);
 		cout << "전화번호(-제외) >>";
-		gotoxy(45, 12);
+		gotoxy(49, 12);
 		cin >> tel;
 
-		gotoxy(24, 14);
-		cout << "간편예매 비밀번호 >>";
-		gotoxy(45, 14);
+		gotoxy(30, 14);
+		cout << "비밀번호(6자리) >>";
+		gotoxy(49, 14);
 		cin >> pw;
 
 		m = new member(birth, tel, pw);
 
-		gotoxy(38, 18);
-		cout << "입력 정보 확인";
+		gotoxy(35, 18);
+		cout << "*입력된 정보 확인*";
 
-		gotoxy(33, 20);
+		gotoxy(34, 20);
 		cout << "생년월일 : ";
-		gotoxy(46, 20);
+		gotoxy(47, 20);
 		cout << m->getBirth();
 
-		gotoxy(33, 22);
+		gotoxy(34, 22);
 		cout << "전화번호 : ";
-		gotoxy(46, 22);
+		gotoxy(47, 22);
 		cout << m->getTel();
 
-		gotoxy(33, 24);
+		gotoxy(34, 24);
 		cout << "비밀번호 : ";
-		gotoxy(46, 24);
+		gotoxy(47, 24);
 		cout << m->getPw();
 
-		gotoxy(28, 28);
+		gotoxy(29, 28);
 		cout << "입력하신 정보가 맞나요?(Y/N) ";
 		
 		cin >> check;
@@ -116,7 +116,7 @@ void join() {
 		if (check == 'Y' || check == 'y') { 
 			ch = false;
 			break;
-		}else if(check == 'N' || check =='n') {
+		}else if(check == 'N' || check =='n' ||check != 'Y' || check != 'y' || check != 'N' || check != 'n') {
 			system("cls");
 		}
 	}

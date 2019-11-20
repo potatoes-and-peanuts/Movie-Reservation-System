@@ -23,27 +23,27 @@ void date() {
 
 		DrawLineBottom();
 
-		gotoxy(35, 9);
-		cout << "*숫자만 입력해주세요*" << endl;
+		gotoxy(35, 10);
+		cout << "*숫자만 입력해주세요.*" << endl;
 
-		gotoxy(42, 13);
+		gotoxy(41, 13);
 		cout << "월 >>" << endl;
-		gotoxy(48, 13);
+		gotoxy(47, 13);
 		cin >> month;
 
-		gotoxy(42, 15);
+		gotoxy(41, 15);
 		cout << "일 >>" << endl;
-		gotoxy(48, 15);
+		gotoxy(47, 15);
 		cin >> date;
 
-		gotoxy(38, 20);
-		cout << "*입력 정보 확인*";
+		gotoxy(37, 20);
+		cout << "*입력된 정보 확인*";
 
-		gotoxy(42, 22);
+		gotoxy(41, 22);
 		cout << month << " 월  " << date << " 일 ";
 		
 
-		gotoxy(29, 27);
+		gotoxy(30, 28);
 		cout << "입력하신 정보가 맞나요?(Y/N) ";
 		cin >> check;
 
@@ -51,7 +51,7 @@ void date() {
 			ch = false;
 			break;
 		}
-		else if (check == 'N' || check == 'n') {
+		else if (check == 'N' || check == 'n' || check != 'Y' || check != 'y' || check != 'N' || check != 'n') {
 			system("cls");
 		}
 	}
