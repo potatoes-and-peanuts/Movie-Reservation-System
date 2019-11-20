@@ -12,10 +12,11 @@ int main(void) {
 
 
 	SetConsoleView();
-	intro();
-	CtheaterObject();
-	join();
-	theater();
+	//intro();
+	//CtheaterObject();
+	//join();
+	//theater();
+	date();
 
 
 	for (int i = 0; i < 9; i++) {
@@ -58,7 +59,7 @@ void CtheaterObject() {
 
 	//movie(string month, string day, string hour, string theater1, string theater2);
 	//movie(string theater1, string theater2);
-}
+} 
 
 void join() {
 	int birth, tel, pw;
@@ -67,55 +68,57 @@ void join() {
 
 	while (ch) {
 		DrawLineTop();
-		gotoxy(38, 2);
-		cout << "☆간편예매☆" << endl;
+		gotoxy(38, 3);
+		cout << "☆간편 로그인☆" << endl;
 	
 		DrawLineBottom();
 
-		gotoxy(33, 10);
-		cout << "생년월일>>";
+		gotoxy(26, 10);
+		cout << "생년월일(6자리) >>";
 		gotoxy(45, 10);
 		cin >> birth;
 
 		gotoxy(26, 12);
-		cout << "전화번호(-제외)>>";
+		cout << "전화번호(-제외) >>";
 		gotoxy(45, 12);
 		cin >> tel;
 
 		gotoxy(24, 14);
-		cout << "간편예매 비밀번호>>";
+		cout << "간편예매 비밀번호 >>";
 		gotoxy(45, 14);
 		cin >> pw;
 
 		m = new member(birth, tel, pw);
 
-		gotoxy(35, 18);
+		gotoxy(38, 18);
 		cout << "입력 정보 확인";
 
 		gotoxy(33, 20);
-		cout << "생년월일";
-		gotoxy(45, 20);
+		cout << "생년월일 : ";
+		gotoxy(46, 20);
 		cout << m->getBirth();
 
 		gotoxy(33, 22);
-		cout << "전화번호";
-		gotoxy(45, 22);
+		cout << "전화번호 : ";
+		gotoxy(46, 22);
 		cout << m->getTel();
 
 		gotoxy(33, 24);
-		cout << "비밀번호";
-		gotoxy(45, 24);
+		cout << "비밀번호 : ";
+		gotoxy(46, 24);
 		cout << m->getPw();
 
-		gotoxy(35, 28);
-		cout << "입력하신 정보가 맞나요?(Y/N)";
+		gotoxy(28, 28);
+		cout << "입력하신 정보가 맞나요?(Y/N) ";
+		
 		cin >> check;
 
-		if (check == 'Y') { 
+		if (check == 'Y' || check == 'y') { 
 			ch = false;
 			break;
-		}else if(check == 'N') {
+		}else if(check == 'N' || check =='n') {
 			system("cls");
 		}
 	}
+	system("cls");
 }

@@ -35,7 +35,7 @@ int theater() {
 		}
 	
 		DrawUserCursor(x);
-
+		
 		key = _getch();
 		switch (key) {
 		case DOWN:
@@ -119,32 +119,26 @@ int theater() {
 				case 0:
 					theater2 = local2[j][0];
 					gotoxy(50, 11);
-					cout << local2[j][0] << endl;
 					break;
 				case 1:
 					theater2 = local2[j][1];
 					gotoxy(50, 11);
-					cout << local2[j][1] << endl;
 					break;
 				case 2:
 					theater2 = local2[j][2];
 					gotoxy(50, 11);
-					cout << local2[j][2] << endl;
 					break;
 				case 3:
 					theater2 = local2[j][3];
 					gotoxy(50, 11);
-					cout << local2[j][3] << endl;
 					break;
 				case 4:
 					theater2 = local2[j][4];
 					gotoxy(50, 11);
-					cout << local2[j][4] << endl;
 					break;
 				case 5:
 					theater2 = local2[j][5];
 					gotoxy(50, 11);
-					cout << local2[j][5] << endl;
 					break;
 				}
 				break;

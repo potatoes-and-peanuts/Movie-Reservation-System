@@ -1,14 +1,12 @@
 #pragma once
-class movie {
+class movie
+{
 public:
 	movie();
-<<<<<<< HEAD
-	movie(string title, string theater1, string theater2);
-	movie(string theater1, string theater2, string hour);
-=======
+
 	movie(string title,string theater1, string theater2);
 	//movie(string theater1, string theater2,string hour);
->>>>>>> 3a985fd67e939ecec138f5e1507d9afdc722fe62
+
 	string getTheater1();
 	string getTitle();
 	virtual ~movie();

@@ -1,7 +1,7 @@
 #include "main.h"
 #include "movie.h"
 
-int CtheaterObject() {
+void CtheaterObject() {
 	string local1[] = { "서울", "경기", "인천", "강원", "대전/충청", "대구", "부산/울산", "경상", "광주/전라/제주" };
 	string local2[9][5] = { { "강남", "강변", "구로", "천호", "홍대" },
 	{ "구리", "김포",  "시흥", "수원", "용인" },
@@ -16,13 +16,18 @@ int CtheaterObject() {
 
 	for (int i = 0; i < 9; i++) {
 		int cnt = 0;
-		for (int j=0; j < 25; j++) {
-			if (j % 5 == 0&&j!=0) {
+		for (int j = 0; j < 25; j++) {
+			if (j % 5 == 0 && j != 0) {
 				cnt++;
 			}
-			blackmoney[i][j] = new movie(local1[i], local2[i][cnt]);
+			blackmoney[i][j] = new movie("블랙머니", local1[i], local2[i][cnt]);
+			JiYoung_82[i][j] = new movie("82년생 김지영", local1[i], local2[i][cnt]);
+			frozen2[i][j] = new movie("겨울왕국2", local1[i], local2[i][cnt]);
 		}
 	}
+
+	//cout<<blackmoney[0][0]->getTitle() << endl;
+
 	//movie(string month, string day, string hour, string theater1, string theater2);
 	//movie(string theater1, string theater2);
 }

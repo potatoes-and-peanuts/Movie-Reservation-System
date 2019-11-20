@@ -54,3 +54,5 @@ int theater();
 void CtheaterObject();
 
 void join();
+
+void date();

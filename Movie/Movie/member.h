@@ -12,10 +12,13 @@ private:
 	int birth;
 	int tel;
 	int pw;
+
+	int hour;
+
+	int month;
+	int date;
+
 	string movie_name;
-	string hour;
-	string month;
-	string date;
 	string seat[20];
 	int age;
 

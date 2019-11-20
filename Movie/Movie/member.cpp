@@ -3,8 +3,6 @@
 using namespace std;
 #include "member.h"
 
-
-
 member::member()
 {
 }
