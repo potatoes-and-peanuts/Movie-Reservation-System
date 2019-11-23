@@ -13,6 +13,7 @@
 
 #define COL                   GetStdHandle(STD_OUTPUT_HANDLE)        // 콘솔창의 핸들정보 받기
 
+/*
 // ** 무채색 **
 #define BLACK                SetConsoleTextAttribute(COL, 0x0000);        // 검정색
 #define WHITE                SetConsoleTextAttribute(COL, 0x000f);        // 흰색
@@ -32,11 +33,12 @@
 #define HIGH_GREEN       SetConsoleTextAttribute(COL, 0x000a);        // 연두색
 #define SKY_BLUE           SetConsoleTextAttribute(COL, 0x000b);        // 하늘색
 #define PLUM                SetConsoleTextAttribute(COL, 0x000d);        // 자주색
+*/
 
 using namespace std;
 
 
-//view.cpp
+//main.cpp
 void SetConsoleView();
 void gotoxy(int x, int y);
 void DrawLineTop();
@@ -50,9 +52,10 @@ int intro();
 //theater.cpp
 int theater();
 
-//CtheaterObject.cpp
 void CtheaterObject();
 
 void join();
 
-void date();
+void Choose_date();
+
+void Choose_seat();

@@ -8,7 +8,7 @@ movie::movie()
 {
 }
 
-movie::movie(string title,string theater1, string theater2)
+movie::movie(string title, string theater1, string theater2)
 {
 	m_title = title;
 	m_theater1 = theater1;

@@ -15,5 +15,6 @@ private:
 	string m_hour;
 	string m_theater1;
 	string m_theater2;
+	
 };
 
