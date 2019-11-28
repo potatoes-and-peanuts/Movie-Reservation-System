@@ -7,6 +7,8 @@ int intro() { //시작화면
 	unsigned char a = 0xa6;
 	unsigned char b[7];
 
+	CursorView(0);
+
 	for (i = 1; i < 7; i++)
 		b[i] = 0xa0 + i;
 

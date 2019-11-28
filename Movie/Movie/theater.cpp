@@ -21,9 +21,9 @@ int theater() {
 
 	DrawLineTop();
 	gotoxy(38, 2);
-	cout << "☆영화관 선택☆" << endl;
+	cout << "☆영화관 선택☆";
 	gotoxy(35, 4);
-	cout << "- 지역을 선택해주세요. -" << endl;
+	cout << "- 지역을 선택해주세요. -";
 
 	while (true) {
 
@@ -33,9 +33,9 @@ int theater() {
 			gotoxy(35, 10 + (i * 3));
 			cout << local1[i] << endl;
 		}
-	
+
 		DrawUserCursor(x);
-		
+
 		key = _getch();
 		switch (key) {
 		case DOWN:
@@ -89,9 +89,9 @@ int theater() {
 
 	DrawLineTop();
 	gotoxy(38, 2);
-	cout << "☆영화관 선택☆" << endl;
+	cout << "☆영화관 선택☆";
 	gotoxy(35, 4);
-	cout << "- 극장을 선택해주세요. -" << endl;
+	cout << "- 극장을 선택해주세요. -";
 
 	x = 0;
 	while (true) {
@@ -101,7 +101,7 @@ int theater() {
 			gotoxy(42, 15 + (i * 3));
 			cout << local2[j][i] << endl;
 		}
-		
+
 		DrawUserCursor2(x);
 
 		key = _getch();
@@ -115,34 +115,34 @@ int theater() {
 		}
 
 		if (key == ENTER) {
-				switch (x / 3) {
-				case 0:
-					theater2 = local2[j][0];
-					gotoxy(50, 11);
-					break;
-				case 1:
-					theater2 = local2[j][1];
-					gotoxy(50, 11);
-					break;
-				case 2:
-					theater2 = local2[j][2];
-					gotoxy(50, 11);
-					break;
-				case 3:
-					theater2 = local2[j][3];
-					gotoxy(50, 11);
-					break;
-				case 4:
-					theater2 = local2[j][4];
-					gotoxy(50, 11);
-					break;
-				case 5:
-					theater2 = local2[j][5];
-					gotoxy(50, 11);
-					break;
-				}
+			switch (x / 3) {
+			case 0:
+				theater2 = local2[j][0];
+				gotoxy(50, 11);
+				break;
+			case 1:
+				theater2 = local2[j][1];
+				gotoxy(50, 11);
+				break;
+			case 2:
+				theater2 = local2[j][2];
+				gotoxy(50, 11);
+				break;
+			case 3:
+				theater2 = local2[j][3];
+				gotoxy(50, 11);
+				break;
+			case 4:
+				theater2 = local2[j][4];
+				gotoxy(50, 11);
+				break;
+			case 5:
+				theater2 = local2[j][5];
+				gotoxy(50, 11);
 				break;
 			}
+			break;
 		}
+	}
 	return 1;
 }

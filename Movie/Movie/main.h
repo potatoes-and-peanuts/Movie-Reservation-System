@@ -6,6 +6,8 @@
 #include <ctime>
 #include <fstream>
 
+using namespace std;
+
 #define UP 72		   // 우측방향키
 #define DOWN 80		   // 하측방향키
 #define LEFT   75      // 좌측방향키 
@@ -36,14 +38,19 @@
 #define PLUM                SetConsoleTextAttribute(COL, 0x000d);        // 자주색
 */
 
-using namespace std;
 
 
-//main.cpp
+//view.cpp
 void SetConsoleView();
 void gotoxy(int x, int y);
+
 void DrawLineTop();
 void DrawLineBottom();
+void DrawLineBottom2();
+void DrawLineBottom3();
+
+void CursorView(char show);
+
 void DrawUserCursor(int& x);
 void DrawUserCursor2(int& x);
 void DrawUserCursor3(int& x);
@@ -55,16 +62,19 @@ int intro();
 //theater.cpp
 int theater();
 
+//main.cpp
 void CtheaterObject();
 
 void join();
 
 void Choose_date();
-
 void Choose_seat();
 
 void Choose_movie();
 
 void View_Story(int y);//스토리 파일 입출력
-
 void View_Review(int y); //리뷰 파일 입출력
+
+void Choose_payment();
+
+void Show_Loading();
