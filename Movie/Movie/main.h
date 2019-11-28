@@ -4,6 +4,7 @@
 #include <windows.h>
 #include <cstdlib>
 #include <ctime>
+#include <fstream>
 
 using namespace std;
 
@@ -46,6 +47,8 @@ void DrawLineTop();
 void DrawLineBottom();
 void DrawUserCursor(int& x);
 void DrawUserCursor2(int& x);
+void DrawUserCursor3(int& x);
+void DrawUserCursor4(int& y);
 
 //intro.cpp
 int intro();
@@ -57,4 +60,15 @@ void CtheaterObject();
 
 void join();
 void Choose_date();
+<<<<<<< HEAD
 void Choose_seat();
+=======
+
+void Choose_seat();
+
+void Choose_movie();
+
+void View_Story(int y);//스토리 파일 입출력
+
+void View_Review(int y); //리뷰 파일 입출력
+>>>>>>> 9bf81c893b147f21659c9600012ccf6d3ff2b355
