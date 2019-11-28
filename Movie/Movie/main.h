@@ -47,6 +47,7 @@ void gotoxy(int x, int y);
 void DrawLineTop();
 void DrawLineBottom();
 void DrawLineBottom2();
+void DrawLineBottom3();
 
 void CursorView(char show);
 

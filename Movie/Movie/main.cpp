@@ -22,7 +22,6 @@ int main(void) {
 
 	//Show_Loading();
 
-	DrawLineBottom2();
 
 	for (int i = 0; i < 9; i++) {
 		for (int j = 0; j < 25; j++) {
