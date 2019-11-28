@@ -2,9 +2,9 @@
 #include "movie.h"
 #include "member.h"
 
-movie* blackmoney[9][25]; //9=서울,경기 .... / 25=홍대, 상암, 강남....등등
-movie* JiYoung_82[9][25];
-movie* frozen2[9][25];
+movie* blackmoney[9][15]; //9=서울,경기 .... / 25=홍대, 상암, 강남....등등
+movie* JiYoung_82[9][15];
+movie* frozen2[9][15];
 
 member* m;
 
@@ -21,7 +21,7 @@ int main(void) {
 	Choose_seat();
 
 	for (int i = 0; i < 9; i++) {
-		for (int j = 0; j < 25; j++) {
+		for (int j = 0; j < 15; j++) {
 			delete blackmoney[i][j];
 			delete JiYoung_82[i][j];
 			delete frozen2[i][j];
@@ -43,24 +43,22 @@ void CtheaterObject() {
 	{ "남포", "대연", "대한", "동래", "서면" },
 	{ "거제", "구미", "김해", "마산", "안동" },
 	{ "광양", "군산", "나주", "목포", "순천" } };
+	string frozen2hour[] = { "7:00~8:50","11:20~1:10","22:05~23:55" };
+	string blackmoneyhour[] = { "8:00~10:4","11:30~1:34","10:05~11:55" };
+	string Kim82hour[] = { "7:00~8:50","11:20~1:10","21:55~23:59" };
 
 
 	for (int i = 0; i < 9; i++) {
 		int cnt = 0;
-		for (int j = 0; j < 25; j++) {
-			if (j % 5 == 0 && j != 0) {
+		for (int j = 0; j < 15; j++) {
+			if (j % 3 == 0 && j != 0) {
 				cnt++;
 			}
-			blackmoney[i][j] = new movie("블랙머니", local1[i], local2[i][cnt]);
-			JiYoung_82[i][j] = new movie("82년생 김지영", local1[i], local2[i][cnt]);
-			frozen2[i][j] = new movie("겨울왕국2", local1[i], local2[i][cnt]);
+			blackmoney[i][j] = new movie("블랙머니", local1[i], local2[i][cnt], blackmoneyhour[j%3]);
+			JiYoung_82[i][j] = new movie("82년생 김지영", local1[i], local2[i][cnt], Kim82hour[j % 3]);
+			frozen2[i][j] = new movie("겨울왕국2", local1[i], local2[i][cnt], frozen2hour[j % 3]);
 		}
 	}
-
-	//cout<<blackmoney[0][0]->getTitle() << endl;
-
-	//movie(string month, string day, string hour, string theater1, string theater2);
-	//movie(string theater1, string theater2);
 }
 
 
@@ -172,6 +170,8 @@ void Choose_date() {
 		cin >> check;
 
 		if (check == 'Y' || check == 'y') {
+			m->setMonth(month);
+			m->setDate(date);
 			ch = false;
 			break;
 		}
@@ -669,3 +669,150 @@ void View_Review(int y) {
 	system("pause>null");
 }
 
+int theater() {
+	string theater1;
+	string theater2;
+
+	string local1[] = { "서울", "경기", "인천", "강원", "대전/충청", "대구", "부산/울산", "경상", "광주/전라/제주" };
+	string local2[9][5] = { { "강남", "강변", "구로", "천호", "홍대" },
+	{ "구리", "김포",  "시흥", "수원", "용인" },
+	{ "계양", "청라", "인천", "부평", "연수역" },
+	{ "강릉", "원주", "인제", "춘천", "춘천명동" },
+	{ "당진", "대전", "보령", "서산", "세종" },
+	{ "대구", "대구수성", "대구월성", "대구철곡", "대구한일" },
+	{ "남포", "대연", "대한", "동래", "서면" },
+	{ "거제", "구미", "김해", "마산", "안동" },
+	{ "광양", "군산", "나주", "목포", "순천" } };
+
+	int x = 0;
+	int key = 0;
+	int j;
+
+	DrawLineTop();
+	gotoxy(38, 2);
+	cout << "☆영화관 선택☆" << endl;
+	gotoxy(35, 4);
+	cout << "- 지역을 선택해주세요. -" << endl;
+
+	while (true) {
+
+		DrawLineBottom();
+
+		for (int i = 0; i < 9; i++) {
+			gotoxy(35, 10 + (i * 3));
+			cout << local1[i] << endl;
+		}
+
+		DrawUserCursor(x);
+
+		key = _getch();
+		switch (key) {
+		case DOWN:
+			x += 3;
+			break;
+		case UP:
+			x -= 3;
+			break;
+		}
+
+		if (key == ENTER) {
+
+			switch (x / 3) {
+			case 0:
+				j = 0;
+				theater1 = local1[0];
+				break;
+			case 1:
+				j = 1;
+				theater1 = local1[1];
+				break;
+			case 3:
+				j = 3;
+				theater1 = local1[2];
+				break;
+			case 4:
+				j = 4;
+				theater1 = local1[3];
+				break;
+			case 5:
+				j = 5;
+				theater1 = local1[4];
+				break;
+			case 6:
+				j = 6;
+				theater1 = local1[5];
+				break;
+			case 7:
+				theater1 = local1[6];
+				break;
+			case 8:
+				j = 8;
+				theater1 = local1[7];
+				break;
+			}
+			m->setArea(theater1);
+			break;
+		}
+	}
+	system("cls");
+
+	DrawLineTop();
+	gotoxy(38, 2);
+	cout << "☆영화관 선택☆" << endl;
+	gotoxy(35, 4);
+	cout << "- 극장을 선택해주세요. -" << endl;
+
+	x = 0;
+	while (true) {
+		DrawLineBottom();
+
+		for (int i = 0; i < 5; i++) {
+			gotoxy(42, 15 + (i * 3));
+			cout << local2[j][i] << endl;
+		}
+
+		DrawUserCursor2(x);
+
+		key = _getch();
+		switch (key) {
+		case DOWN:
+			x += 3;
+			break;
+		case UP:
+			x -= 3;
+			break;
+		}
+
+		if (key == ENTER) {
+			switch (x / 3) {
+			case 0:
+				theater2 = local2[j][0];
+				gotoxy(50, 11);
+				break;
+			case 1:
+				theater2 = local2[j][1];
+				gotoxy(50, 11);
+				break;
+			case 2:
+				theater2 = local2[j][2];
+				gotoxy(50, 11);
+				break;
+			case 3:
+				theater2 = local2[j][3];
+				gotoxy(50, 11);
+				break;
+			case 4:
+				theater2 = local2[j][4];
+				gotoxy(50, 11);
+				break;
+			case 5:
+				theater2 = local2[j][5];
+				gotoxy(50, 11);
+				break;
+			}
+			m->setTheater(theater2);
+			break;
+		}
+	}
+	return 1;
+}
