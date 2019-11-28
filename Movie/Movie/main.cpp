@@ -12,11 +12,12 @@ member* m;
 int main(void) {
 
 	SetConsoleView();
-	//intro();
-	//CtheaterObject();
-	//join();
-	//theater();
-	//Choose_date();
+	intro();
+	CtheaterObject();
+	join();
+	theater();
+	Choose_date();
+	Choose_movie();
 	Choose_seat();
 
 	for (int i = 0; i < 9; i++) {
@@ -475,5 +476,196 @@ void DrawUserCursor2(int& x) { //커서 그리기
 	else if (x < 0) x = 12;
 	gotoxy(47, 15 + x);
 	cout << "◀";
+}
+
+void DrawUserCursor3(int& x) {
+	if (x > 4) x = 0;
+	else if (x < 0) x = 4;
+	gotoxy(35, 15 + x);
+	cout << "▶";
+}
+
+void DrawUserCursor4(int& y) { //좌우
+	if (y > 4) y = 0;
+	else if (y < 0) y = 4;
+}
+
+void Choose_movie() {
+	int x = 0, y = 0;
+	int key = 0;
+	DrawLineTop();
+
+	gotoxy(38, 3);
+	cout << "☆영화 예매☆" << endl;
+
+	while (true) {
+		gotoxy(38, 3);
+		cout << "☆영화 예매☆" << endl;
+		DrawLineBottom();
+		gotoxy(40, 10);
+		DrawUserCursor4(y);
+
+		switch (y / 2)
+		{
+		case 0: cout << "겨울왕국2"; break;
+		case 1: cout << "블랙머니"; break;
+		case 2: cout << "82년생 김지영"; break;
+		}
+		/*cout << "겨울왕국2";*/
+
+		gotoxy(40, 15);
+		cout << "예매하기";
+
+		gotoxy(40, 17);
+		cout << "줄거리보기";
+
+		gotoxy(40, 19);
+		cout << "리뷰보기";
+
+		DrawUserCursor3(x);
+
+
+		key = _getch();
+		switch (key) {
+		case DOWN:
+			x += 2;
+			break;
+		case UP:
+			x -= 2;
+			break;
+		case RIGHT:
+			y += 2;
+			break;
+		case LEFT:
+			y -= 2;
+			break;
+		}
+
+		if (key == ENTER) {
+			switch (x / 2) {
+			case 0:
+				//Choose_hour();
+				break;
+			case 1:
+				View_Story(y);
+				break;
+			case 2:
+				View_Review(y);
+				break;
+			}
+		}
+	}
+}
+
+void View_Story(int y) { //줄거리 보여주기
+	int i = 0;
+	string buffer;
+	char ch;
+	system("cls");
+	DrawLineTop();
+
+	gotoxy(38, 3);
+	cout << "☆줄거리☆" << endl;
+
+	DrawLineBottom();
+	switch (y / 2)
+	{
+	case 0: {	ifstream Story_frozen("Frozen2Story.txt");
+		while (Story_frozen.get(ch)) {
+			if (ch == '\n') {
+				gotoxy(5, 15 + i);
+				i++;
+			}
+			else {
+				cout << ch;
+			}
+		}
+		Story_frozen.close();
+		break;
+	}
+	case 1: {	ifstream Story_black("BlackMoneyStory.txt");
+		while (Story_black.get(ch)) {
+			if (ch == '\n') {
+				gotoxy(4, 15 + i);
+				i++;
+			}
+			else {
+				cout << ch;
+			}
+		}
+		Story_black.close();
+		break;
+	}
+	case 2: {	ifstream Story_82("82KimStory.txt");
+		while (Story_82.get(ch)) {
+			if (ch == '\n') {
+				gotoxy(5, 15 + i);
+				i++;
+			}
+			else {
+				cout << ch;
+			}
+		}
+		Story_82.close();
+		break;
+	}
+	}
+	system("pause>null");
+}
+
+void View_Review(int y) {
+	int i = 0;
+	string buffer;
+	char ch;
+	system("cls");
+	DrawLineTop();
+
+	gotoxy(40, 3);
+	cout << "☆리뷰☆" << endl;
+
+	DrawLineBottom();
+	switch (y / 2)
+	{
+	case 0: {	ifstream Review_frozen("Frozen2Review.txt");
+		while (Review_frozen.get(ch)) {
+			if (ch == '\n') {
+				gotoxy(5, 15 + i);
+				i++;
+			}
+			else {
+				cout << ch;
+			}
+		}
+		Review_frozen.close();
+		break;
+	}
+	case 1: {	ifstream Review_black("BlackMoneyReview.txt");
+		while (Review_black.get(ch)) {
+			if (ch == '\n') {
+				gotoxy(4, 15 + i);
+				i++;
+			}
+			else {
+				cout << ch;
+			}
+		}
+		Review_black.close();
+		break;
+	}
+	case 2: {	ifstream Review_82("82KimReview.txt");
+		while (Review_82.get(ch)) {
+			if (ch == '\n') {
+				gotoxy(5, 15 + i);
+				i++;
+			}
+			else {
+				cout << ch;
+			}
+		}
+		Review_82.close();
+		break;
+	}
+	}
+	system("pause>null");
 }
 
