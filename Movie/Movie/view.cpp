@@ -12,6 +12,34 @@ void gotoxy(int x, int y) {
 	SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), Pos);
 }
 
+void DrawLineTop() { // '영화관 선택'와 같은 글씨가 있는 박스
+	int i, j;
+	unsigned char a = 0xa6;
+	unsigned char b[7];
+
+	for (i = 1; i < 7; i++)
+		b[i] = 0xa0 + i;
+
+	cout << a << b[3];   //┌ 출력
+	for (i = 0; i < 86; i++)
+		cout << a << b[1];   // ─ 출력
+	cout << a << b[4] << endl;   // ┐출력
+
+	//빈줄
+	for (i = 0; i < 5; i++) {
+		cout << a << b[2];
+		for (j = 0; j < 43; j++)
+			cout << "  ";
+		cout << a << b[2] << endl;
+	}
+
+	cout << a << b[6];   // └출력
+	for (i = 0; i < 86; i++)    //─ 출력
+		cout << a << b[1];
+	cout << a << b[5] << endl;   // ┘출력 
+}
+
+
 void DrawLineBottom() { // '영화관 선택'와 같은 글씨 아래에 있는 박스 (이벤트 발생하는 구간)
 	int n, m;
 	unsigned char a = 0xa6;
@@ -40,31 +68,51 @@ void DrawLineBottom() { // '영화관 선택'와 같은 글씨 아래에 있는 박스 (이벤트 발
 	cout << a << b[5] << endl;   // ┘출력
 }
 
-void DrawLineTop() { // '영화관 선택'와 같은 글씨가 있는 박스
-	int i, j;
+void DrawLineBottom2() { //영화 화면의 화면 전환 디자인을 위한 테두리선
+	int n, m;
 	unsigned char a = 0xa6;
 	unsigned char b[7];
 
-	for (i = 1; i < 7; i++)
-		b[i] = 0xa0 + i;
+	DrawLineBottom();
 
+	for (n = 1; n < 7; n++)
+		b[n] = 0xa0 + n;
+
+	gotoxy(17, 12);
 	cout << a << b[3];   //┌ 출력
-	for (i = 0; i < 86; i++)
+	for (n = 0; n < 52; n++)
 		cout << a << b[1];   // ─ 출력
 	cout << a << b[4] << endl;   // ┐출력
 
-	//빈줄
-	for (i = 0; i < 5; i++) {
+	
+	for (n = 0; n < 19; n++) {
+		gotoxy(17, 13+n);
 		cout << a << b[2];
-		for (j = 0; j < 43; j++)
-			cout << "  ";
+		for (m = 0; m < 13; m++) //빈줄
+			cout << "    ";
+		gotoxy(70, 13+n);
 		cout << a << b[2] << endl;
 	}
 
+	gotoxy(17, 31);
 	cout << a << b[6];   // └출력
-	for (i = 0; i < 86; i++)    //─ 출력
+	for (n = 0; n < 51; n++)    //─ 출력
 		cout << a << b[1];
-	cout << a << b[5] << endl;   // ┘출력 
+	gotoxy(70, 31);
+	cout << a << b[5] << endl;   // ┘출력
+}
+
+void CursorView(char show)//커서숨기기
+{
+	HANDLE hConsole;
+	CONSOLE_CURSOR_INFO ConsoleCursor;
+
+	hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
+
+	ConsoleCursor.bVisible = show;
+	ConsoleCursor.dwSize = 1;
+
+	SetConsoleCursorInfo(hConsole, &ConsoleCursor);
 }
 
 void DrawUserCursor(int& x) { //커서 그리기

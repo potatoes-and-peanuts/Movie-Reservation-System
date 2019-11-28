@@ -18,7 +18,11 @@ int main(void) {
 	//theater();
 	//Choose_date();
 	//Choose_movie();
-	Choose_seat();
+	//Choose_seat();
+
+	//Show_Loading();
+
+	DrawLineBottom2();
 
 	for (int i = 0; i < 9; i++) {
 		for (int j = 0; j < 25; j++) {
@@ -64,6 +68,8 @@ void join() {
 	int birth, tel, pw;
 	char check;
 	bool ch = true;
+
+	CursorView(0);
 
 	while (ch) {
 		DrawLineTop();
@@ -131,6 +137,7 @@ void Choose_date() {
 	char check;
 	bool ch = true;
 
+	CursorView(0);
 
 	while (true) {
 
@@ -207,6 +214,8 @@ int check_seat(int seat[9][13], char row, int col) {
 	else if (row = 'I') {
 		return seat[8][col - 1] = 15;
 	}
+	
+	else return 0;
 }
 
 void Choose_seat() {
@@ -237,6 +246,8 @@ void Choose_seat() {
 	int p_total = 0;
 
 
+	CursorView(0);
+
 	DrawLineTop();
 
 	gotoxy(36, 2);
@@ -248,6 +259,7 @@ void Choose_seat() {
 
 	gotoxy(28, 16);
 	cout << "스크린";
+
 	//좌석 행, 열 출력
 	for (i = 0; i < 9; i++) {
 		gotoxy(6, 19 + i);
@@ -270,37 +282,26 @@ void Choose_seat() {
 	for (i = 0; i < 9; i++) {
 		gotoxy(8, 19 + i);
 		for (j = 0; j < 3; j++)
-			if (seat[i][j] == 0) {
+			if (seat[i][j] == 0)
 				cout << "□ ";
-			}
-			else if (seat[i][j] == 15) {
+			else if (seat[i][j] == 15)
 				cout << "■ ";
-			}
-
 		cout << "   ";
 
 		for (j = 3; j < 10; j++)
-			if (seat[i][j] == 0) {
+			if (seat[i][j] == 0)
 				cout << "□ ";
-			}
-			else if (seat[i][j] == 15) {
+			else if (seat[i][j] == 15)
 				cout << "■ ";
-			}
-
 		cout << "   ";
 
 		for (j = 10; j < 13; j++)
-			if (seat[i][j] == 0) {
+			if (seat[i][j] == 0)
 				cout << "□ ";
-			}
-			else if (seat[i][j] == 15) {
+			else if (seat[i][j] == 15)
 				cout << "■ ";
-			}
-
-
 		cout << "\n" << endl;
 	}
-
 
 	//인원 입력
 	gotoxy(7, 10);
@@ -350,11 +351,8 @@ void Choose_seat() {
 	gotoxy(56, 16);
 	cout << "◈ " << p_total << "명의 좌석을 입력해주세요.";
 
-
 	int cnt = 1;
-
 	while (true) {
-
 		cnt++;
 
 		gotoxy(56, 20);
@@ -438,14 +436,17 @@ void Choose_seat() {
 			Sleep(2000);
 			break;
 		}
-
-		//system("cls");
 	}
+
+	//system("cls");
 }
 
 void Choose_movie() {
 	int x = 0, y = 0;
 	int key = 0;
+
+	CursorView(0);
+
 	DrawLineTop();
 
 	gotoxy(38, 3);
@@ -578,46 +579,102 @@ void View_Review(int y) {
 	DrawLineBottom();
 	switch (y / 2)
 	{
-		case 0: {	ifstream Review_frozen("Frozen2Review.txt");
-			while (Review_frozen.get(ch)) {
-				if (ch == '\n') {
-					gotoxy(5, 15 + i);
-					i++;
-				}
-				else {
-					cout << ch;
-				}
+	case 0: {	ifstream Review_frozen("Frozen2Review.txt");
+		while (Review_frozen.get(ch)) {
+			if (ch == '\n') {
+				gotoxy(5, 15 + i);
+				i++;
 			}
-			Review_frozen.close();
-			break;
-		}
-		case 1: {	ifstream Review_black("BlackMoneyReview.txt");
-			while (Review_black.get(ch)) {
-				if (ch == '\n') {
-					gotoxy(4, 15 + i);
-					i++;
-				}
-				else {
-					cout << ch;
-				}
+			else {
+				cout << ch;
 			}
-			Review_black.close();
-			break;
 		}
-		case 2: {	ifstream Review_82("82KimReview.txt");
-			while (Review_82.get(ch)) {
-				if (ch == '\n') {
-					gotoxy(5, 15 + i);
-					i++;
-				}
-				else {
-					cout << ch;
-				}
+		Review_frozen.close();
+		break;
+	}
+	case 1: {	ifstream Review_black("BlackMoneyReview.txt");
+		while (Review_black.get(ch)) {
+			if (ch == '\n') {
+				gotoxy(4, 15 + i);
+				i++;
 			}
-			Review_82.close();
-			break;
+			else {
+				cout << ch;
+			}
 		}
+		Review_black.close();
+		break;
+	}
+	case 2: {	ifstream Review_82("82KimReview.txt");
+		while (Review_82.get(ch)) {
+			if (ch == '\n') {
+				gotoxy(5, 15 + i);
+				i++;
+			}
+			else {
+				cout << ch;
+			}
+		}
+		Review_82.close();
+		break;
+	}
 	}
 	system("pause>null");
 }
 
+void Show_Loading() {
+	system("cls");
+
+	CursorView(0);
+
+	gotoxy(36, 15);
+	cout << "* 결제 중... *";
+	gotoxy(38, 17);
+	cout << "□□□□□";
+	Sleep(500);
+	gotoxy(38, 17);
+	cout << "■";
+	Sleep(500);
+	gotoxy(38, 17);
+	cout << "■■";
+	Sleep(500);
+	gotoxy(38, 17);
+	cout << "■■■";
+	Sleep(500);
+	gotoxy(38, 17);
+	cout << "■■■■";
+	Sleep(500);
+	gotoxy(31, 15);
+	cout << "* 결제가 완료되었습니다! *";
+	gotoxy(37, 17);
+	cout << "■■■■■";
+	Sleep(1000);
+
+	system("cls");
+	gotoxy(30, 15);
+	cout << "* 영수증 출력 중... *";
+	gotoxy(38, 17);
+	cout << "□□□□□";
+	Sleep(500);
+	gotoxy(38, 17);
+	cout << "■";
+	Sleep(500);
+	gotoxy(38, 17);
+	cout << "■■";
+	Sleep(500);
+	gotoxy(38, 17);
+	cout << "■■■";
+	Sleep(500);
+	gotoxy(38, 17);
+	cout << "■■■■";
+	Sleep(500);
+	gotoxy(29, 15);
+	cout << "* 영수증 출력이 완료되었습니다! *";
+	gotoxy(37, 17);
+	cout << "■■■■■";
+	
+	Sleep(500);
+
+}
+
+void Choose_payment() {}
