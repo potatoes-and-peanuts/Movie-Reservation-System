@@ -5,6 +5,8 @@
 #include <cstdlib>
 #include <ctime>
 
+using namespace std;
+
 #define UP 72		   // 우측방향키
 #define DOWN 80		   // 하측방향키
 #define LEFT   75      // 좌측방향키 
@@ -35,7 +37,6 @@
 #define PLUM                SetConsoleTextAttribute(COL, 0x000d);        // 자주색
 */
 
-using namespace std;
 
 
 //main.cpp
@@ -55,7 +56,5 @@ int theater();
 void CtheaterObject();
 
 void join();
-
 void Choose_date();
-
 void Choose_seat();

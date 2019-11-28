@@ -56,10 +56,6 @@ void CtheaterObject() {
 		}
 	}
 
-	//cout<<blackmoney[0][0]->getTitle() << endl;
-
-	//movie(string month, string day, string hour, string theater1, string theater2);
-	//movie(string theater1, string theater2);
 }
 
 
@@ -182,6 +178,37 @@ void Choose_date() {
 	system("cls");
 }
 
+int check_seat(int seat[9][13], char row, int col) {
+
+	if (row == 'A') {
+		return seat[0][col - 1] = 15;
+	}
+	else if (row == 'B') {
+		return seat[1][col - 1] = 15;
+	}
+	else if (row == 'C') {
+		return seat[2][col - 1] = 15;
+	}
+	else if (row == 'D') {
+		return seat[3][col - 1] = 15;
+	}
+	else if (row == 'E') {
+		return seat[4][col - 1] = 15;
+	}
+	else if (row == 'F') {
+		return seat[5][col - 1] = 15;
+	}
+	else if (row == 'G') {
+		return seat[6][col - 1] = 15;
+	}
+	else if (row == 'H') {
+		return seat[7][col - 1] = 15;
+	}
+	else if (row = 'I') {
+		return seat[8][col - 1] = 15;
+	}
+}
+
 void Choose_seat() {
 	system("cls");
 
@@ -199,19 +226,16 @@ void Choose_seat() {
 		{ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
 		{ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 } };
 
-	
+
 	char ShowRows[] = { 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I' };
 	int ShowCols[] = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13 };
 
-	int teenager = 0, adult = 0, udae = 0;
-	
 	char row[20];
-	int col[20];
-	int p_money = 0;  
+	int col;
+
+	int teenager = 0, adult = 0, udae = 0;
+
 	int p_total = 0;
-
-
-
 
 
 	DrawLineTop();
@@ -263,7 +287,7 @@ void Choose_seat() {
 			else if (seat[i][j] == 15) {
 				cout << "■ ";
 			}
-			
+
 		cout << "   ";
 
 		for (j = 10; j < 13; j++)
@@ -273,10 +297,11 @@ void Choose_seat() {
 			else if (seat[i][j] == 15) {
 				cout << "■ ";
 			}
-	
+
 
 		cout << "\n" << endl;
 	}
+
 
 	//인원 입력
 	gotoxy(7, 10);
@@ -295,10 +320,12 @@ void Choose_seat() {
 	gotoxy(73, 10);
 	cin >> udae;
 
-	if (teenager == 0 && adult == 0 && udae == 0) {
+	p_total = teenager + adult + udae;
+
+	if (p_total <= 0 || p_total > 19) {
 		while (true) {
-			gotoxy(28, 13);
-			cout << "***관람인원이 없습니다. ***";
+			gotoxy(35, 13);
+			cout << "***1~19 사이의 인원 입력하세요.***";
 
 			gotoxy(49, 10);
 			cout << "   ";
@@ -314,16 +341,23 @@ void Choose_seat() {
 			gotoxy(73, 10);
 			cin >> udae;
 
-			if (teenager != 0 || adult != 0 || udae != 0) break;
+			p_total = teenager + adult + udae;
+
+			if (p_total > 0 && p_total < 20) break;
 		}
 	}
 
 	//좌석 입력
-	p_total = teenager + adult + udae;
 	gotoxy(56, 16);
 	cout << "◈ " << p_total << "명의 좌석을 입력해주세요.";
 
-	for (i = 0; i < p_total; i++) {
+
+	int cnt = 1;
+
+	while (true) {
+
+		cnt++;
+
 		gotoxy(56, 20);
 		cout << "원하는 좌석의 행(알파벳) :     ";
 		gotoxy(56, 24);
@@ -331,14 +365,13 @@ void Choose_seat() {
 
 		gotoxy(83, 20);
 		cin >> row[i];
-	
 
 		//알파벳 대문자가 아닐 때
 		if (row[i] <= 64 || row[i] >= 74) {
 			while (true) {
 				gotoxy(27, 13);
 				cout << "***알파벳 대문자로 입력해주세요.***";
-			
+
 				gotoxy(83, 20);
 				cout << "   ";
 				gotoxy(83, 20);
@@ -349,10 +382,10 @@ void Choose_seat() {
 		}
 
 		gotoxy(81, 24);
-		cin >> col[i];
+		cin >> col;
 
 		//입력받은 1~13가 아닐 때 
-		if (col[i] < 1 || col[i] >= 13) {
+		if (col < 1 || col > 13) {
 			while (true) {
 				gotoxy(27, 13);
 				cout << "***1 ~ 13사이의 숫자를 입력해주세요.***";
@@ -362,118 +395,51 @@ void Choose_seat() {
 				gotoxy(81, 24);
 				cin >> row[i];
 
-				if (col[i] <= 1 || col[i] >= 13) break;
+				if (col <= 1 || col >= 13) break;
 			}
 		}
-	}
 
 
-	//확인용 
-	for (int i = 0; i < p_total; i++) {
-		gotoxy(20, 30+i);
-		cout << i+1 << "번 | " << row[i] << col[i];
-	}
+		check_seat(seat, row[i], col);
 
-	while (true) {
-		gotoxy(31, 32);
-		cout << "입력하신 정보가 맞나요?(Y/N) ";
-		cin >> check;
+		//좌석 체크
+		for (i = 0; i < 9; i++) {
+			gotoxy(8, 19 + i);
+			for (j = 0; j < 3; j++)
+				if (seat[i][j] == 0) {
+					cout << "□ ";
+				}
+				else if (seat[i][j] == 15) {
+					cout << "■ ";
+				}
 
-		if (check == 'Y' || check == 'y') {
-			ch = false;
+			cout << "   ";
+
+			for (j = 3; j < 10; j++)
+				if (seat[i][j] == 0) {
+					cout << "□ ";
+				}
+				else if (seat[i][j] == 15) {
+					cout << "■ ";
+				}
+
+			cout << "   ";
+
+			for (j = 10; j < 13; j++)
+				if (seat[i][j] == 0) {
+					cout << "□ ";
+				}
+				else if (seat[i][j] == 15) {
+					cout << "■ ";
+				}
+		}
+
+
+		if (cnt > p_total) {
+			Sleep(2000);
 			break;
 		}
-		else if (check == 'N' || check == 'n' || check != 'Y' || check != 'y' || check != 'N' || check != 'n') {
-			system("cls");
-		}
+
+		//system("cls");
 	}
-
-	system("cls");
 }
-
-
-
-
-
-
-void SetConsoleView() {
-	system("mode con:cols=90 lines=40");
-	system("Title Movie Reservation Program");
-}
-
-void gotoxy(int x, int y) {
-	COORD Pos;
-	Pos.X = x;
-	Pos.Y = y;
-	SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), Pos);
-}
-
-void DrawLineBottom() { // '영화관 선택'와 같은 글씨 아래에 있는 박스 (이벤트 발생하는 구간)
-	int n, m;
-	unsigned char a = 0xa6;
-	unsigned char b[7];
-
-	for (n = 1; n < 7; n++)
-		b[n] = 0xa0 + n;
-
-	gotoxy(0, 7);
-	cout << a << b[3];   //┌ 출력
-	for (n = 0; n < 86; n++)
-		cout << a << b[1];   // ─ 출력
-
-	cout << a << b[4] << endl;   // ┐출력
-
-	for (n = 0; n < 30; n++) {
-		cout << a << b[2];
-		for (m = 0; m < 43; m++) //빈줄
-			cout << "  ";
-		cout << a << b[2] << endl;
-	}
-
-	cout << a << b[6];   // └출력
-	for (n = 0; n < 86; n++)    //─ 출력
-		cout << a << b[1];
-	cout << a << b[5] << endl;   // ┘출력
-}
-
-void DrawLineTop() { // '영화관 선택'와 같은 글씨가 있는 박스
-	int i, j;
-	unsigned char a = 0xa6;
-	unsigned char b[7];
-
-	for (i = 1; i < 7; i++)
-		b[i] = 0xa0 + i;
-
-	cout << a << b[3];   //┌ 출력
-	for (i = 0; i < 86; i++)
-		cout << a << b[1];   // ─ 출력
-	cout << a << b[4] << endl;   // ┐출력
-
-	//빈줄
-	for (i = 0; i < 5; i++) {
-		cout << a << b[2];
-		for (j = 0; j < 43; j++)
-			cout << "  ";
-		cout << a << b[2] << endl;
-	}
-
-	cout << a << b[6];   // └출력
-	for (i = 0; i < 86; i++)    //─ 출력
-		cout << a << b[1];
-	cout << a << b[5] << endl;   // ┘출력 
-}
-
-void DrawUserCursor(int& x) { //커서 그리기
-	if (x > 24) x = 0;
-	else if (x < 0) x = 24;
-	gotoxy(50, 10 + x);
-	cout << "◀";
-}
-
-void DrawUserCursor2(int& x) { //커서 그리기
-	if (x > 12) x = 0;
-	else if (x < 0) x = 12;
-	gotoxy(47, 15 + x);
-	cout << "◀";
-}
-
