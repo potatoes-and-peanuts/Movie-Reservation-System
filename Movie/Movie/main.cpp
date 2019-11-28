@@ -12,12 +12,12 @@ member* m;
 int main(void) {
 
 	SetConsoleView();
-	intro();
-	CtheaterObject();
-	join();
-	theater();
-	Choose_date();
-	Choose_movie();
+	//intro();
+	//CtheaterObject();
+	//join();
+	//theater();
+	//Choose_date();
+	//Choose_movie();
 	Choose_seat();
 
 	for (int i = 0; i < 9; i++) {
@@ -180,7 +180,6 @@ void Choose_date() {
 }
 
 int check_seat(int seat[9][13], char row, int col) {
-
 	if (row == 'A') {
 		return seat[0][col - 1] = 15;
 	}
@@ -214,7 +213,6 @@ void Choose_seat() {
 	system("cls");
 
 	int i, j;
-	char check;
 	bool ch = true;
 
 	int seat[9][13] = { { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
@@ -443,40 +441,6 @@ void Choose_seat() {
 
 		//system("cls");
 	}
-<<<<<<< HEAD
-}
-=======
-
-	cout << a << b[6];   // └출력
-	for (i = 0; i < 86; i++)    //─ 출력
-		cout << a << b[1];
-	cout << a << b[5] << endl;   // ┘출력 
-}
-
-void DrawUserCursor(int& x) { //커서 그리기
-	if (x > 24) x = 0;
-	else if (x < 0) x = 24;
-	gotoxy(50, 10 + x);
-	cout << "◀";
-}
-
-void DrawUserCursor2(int& x) { //커서 그리기
-	if (x > 12) x = 0;
-	else if (x < 0) x = 12;
-	gotoxy(47, 15 + x);
-	cout << "◀";
-}
-
-void DrawUserCursor3(int& x) {
-	if (x > 4) x = 0;
-	else if (x < 0) x = 4;
-	gotoxy(35, 15 + x);
-	cout << "▶";
-}
-
-void DrawUserCursor4(int& y) { //좌우
-	if (y > 4) y = 0;
-	else if (y < 0) y = 4;
 }
 
 void Choose_movie() {
@@ -500,7 +464,6 @@ void Choose_movie() {
 		case 1: cout << "블랙머니"; break;
 		case 2: cout << "82년생 김지영"; break;
 		}
-		/*cout << "겨울왕국2";*/
 
 		gotoxy(40, 15);
 		cout << "예매하기";
@@ -615,47 +578,46 @@ void View_Review(int y) {
 	DrawLineBottom();
 	switch (y / 2)
 	{
-	case 0: {	ifstream Review_frozen("Frozen2Review.txt");
-		while (Review_frozen.get(ch)) {
-			if (ch == '\n') {
-				gotoxy(5, 15 + i);
-				i++;
+		case 0: {	ifstream Review_frozen("Frozen2Review.txt");
+			while (Review_frozen.get(ch)) {
+				if (ch == '\n') {
+					gotoxy(5, 15 + i);
+					i++;
+				}
+				else {
+					cout << ch;
+				}
 			}
-			else {
-				cout << ch;
-			}
+			Review_frozen.close();
+			break;
 		}
-		Review_frozen.close();
-		break;
-	}
-	case 1: {	ifstream Review_black("BlackMoneyReview.txt");
-		while (Review_black.get(ch)) {
-			if (ch == '\n') {
-				gotoxy(4, 15 + i);
-				i++;
+		case 1: {	ifstream Review_black("BlackMoneyReview.txt");
+			while (Review_black.get(ch)) {
+				if (ch == '\n') {
+					gotoxy(4, 15 + i);
+					i++;
+				}
+				else {
+					cout << ch;
+				}
 			}
-			else {
-				cout << ch;
-			}
+			Review_black.close();
+			break;
 		}
-		Review_black.close();
-		break;
-	}
-	case 2: {	ifstream Review_82("82KimReview.txt");
-		while (Review_82.get(ch)) {
-			if (ch == '\n') {
-				gotoxy(5, 15 + i);
-				i++;
+		case 2: {	ifstream Review_82("82KimReview.txt");
+			while (Review_82.get(ch)) {
+				if (ch == '\n') {
+					gotoxy(5, 15 + i);
+					i++;
+				}
+				else {
+					cout << ch;
+				}
 			}
-			else {
-				cout << ch;
-			}
+			Review_82.close();
+			break;
 		}
-		Review_82.close();
-		break;
-	}
 	}
 	system("pause>null");
 }
 
->>>>>>> 9bf81c893b147f21659c9600012ccf6d3ff2b355

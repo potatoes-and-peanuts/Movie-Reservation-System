@@ -59,16 +59,11 @@ int theater();
 void CtheaterObject();
 
 void join();
-void Choose_date();
-<<<<<<< HEAD
-void Choose_seat();
-=======
 
+void Choose_date();
 void Choose_seat();
 
 void Choose_movie();
 
 void View_Story(int y);//스토리 파일 입출력
-
 void View_Review(int y); //리뷰 파일 입출력
->>>>>>> 9bf81c893b147f21659c9600012ccf6d3ff2b355

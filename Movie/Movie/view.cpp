@@ -80,3 +80,15 @@ void DrawUserCursor2(int& x) { //커서 그리기
 	gotoxy(47, 15 + x);
 	cout << "◀";
 }
+
+void DrawUserCursor3(int& x) {
+	if (x > 4) x = 0;
+	else if (x < 0) x = 4;
+	gotoxy(35, 15 + x);
+	cout << "▶";
+}
+
+void DrawUserCursor4(int& y) { //좌우
+	if (y > 4) y = 0;
+	else if (y < 0) y = 4;
+}

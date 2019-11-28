@@ -1,6 +1,4 @@
-#include <iostream>
-#include <string>
-using namespace std;
+#include "main.h"
 #include "member.h"
 
 member::member()
