@@ -47,9 +47,93 @@ void member::setTitle(string name)
 	this->movie_name = name;
 }
 
+void member::setHour(string hour)
+{
+	this->hour = hour;
+}
+
+void member::setTicketCount(int teenager, int adult, int udae)
+{
+	this->teenager = teenager;
+	this->adult = adult;
+	this->udae = udae;
+}
+
+void member::setTotalPrice(int price)
+{
+	this->total_price = price;
+}
+
+void member::setSeat(char seat)
+{
+	this->m_row[cnt] = seat;
+	cnt++;
+}
+
+void member::setColnum(int col)
+{
+	this->m_col[cnt2] = col;
+	cnt2++;
+}
+
+void member::setP_Total(int p_total)
+{
+	this->p_total = p_total;
+}
+
 string member::getTitle()
 {
 	return this->movie_name;
+}
+
+string member::getHour()
+{
+	return this->hour;
+}
+
+char member::getSeat(int cnt)
+{	
+	return this->m_row[cnt];
+}
+
+int member::getColnum(int cnt)
+{
+	return this->m_col[cnt];
+}
+
+int member::getTeenager()
+{
+	return this->teenager;
+}
+
+int member::getAdult()
+{
+	return this->adult;
+}
+
+int member::getUdae()
+{
+	return this->udae;
+}
+
+int member::getTotalPrice()
+{
+	return this->total_price;
+}
+
+int member::getP_Total()
+{
+	return this->p_total;
+}
+
+int member::getMonth()
+{
+	return this->month;
+}
+
+int member::getDate()
+{
+	return this->date;
 }
 
 int member::getBirth()

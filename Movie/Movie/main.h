@@ -82,3 +82,5 @@ void Show_Loading();
 void print();
 
 void Choose_hour(int& x);
+
+int compute(int teenager, int adult, int udea);

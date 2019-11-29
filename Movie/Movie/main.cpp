@@ -240,13 +240,13 @@ int Choose_seat() {
 	char ShowRows[] = { 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I' };
 	int ShowCols[] = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13 };
 
-	char row[20];
+	char row;
 	int col;
 
 	int teenager = 0, adult = 0, udae = 0;
 
 	int p_total = 0;
-
+	int total_price = 0;
 
 	CursorView(0);
 
@@ -349,6 +349,13 @@ int Choose_seat() {
 		}
 	}
 
+	//compute()-> 총 가격 계산
+	total_price = compute(teenager, adult, udae);
+	m->setTicketCount(teenager, adult, udae);
+	m->setTotalPrice(total_price);
+	m->setP_Total(p_total);
+	
+
 	//좌석 입력
 	gotoxy(56, 16);
 	cout << "◈ " << p_total << "명의 좌석을 입력해주세요.";
@@ -363,10 +370,10 @@ int Choose_seat() {
 		cout << "원하는 좌석의 열(번호) :      ";
 
 		gotoxy(83, 20);
-		cin >> row[i];
+		cin >> &row;
 
 		//알파벳 대문자가 아닐 때
-		if (row[i] <= 64 || row[i] >= 74) {
+		if (row <= 64 || row >= 74) {
 			while (true) {
 				gotoxy(27, 13);
 				cout << "***알파벳 대문자로 입력해주세요.***";
@@ -374,11 +381,13 @@ int Choose_seat() {
 				gotoxy(83, 20);
 				cout << "   ";
 				gotoxy(83, 20);
-				cin >> row[i];
+				cin >> row;
 
-				if (row[i] >= 64 && row[i] <= 74) break;
+				if (row >= 64 && row <= 74) break;
 			}
 		}
+		//cout << row[0] << endl;
+		m->setSeat(row);
 
 		gotoxy(81, 24);
 		cin >> col;
@@ -392,14 +401,14 @@ int Choose_seat() {
 				gotoxy(81, 24);
 				cout << "   ";
 				gotoxy(81, 24);
-				cin >> row[i];
+				cin >> row;
 
 				if (col <= 1 || col >= 13) break;
 			}
 		}
+		m->setColnum(col);
 
-
-		check_seat(seat, row[i], col);
+		check_seat(seat, row , col);
 
 		//좌석 체크
 		for (i = 0; i < 9; i++) {
@@ -439,11 +448,7 @@ int Choose_seat() {
 			Choose_payment();
 			break;
 		}
-		break;
 	}
-
-	
-
 	return 0;
 }
 
@@ -857,16 +862,14 @@ void Choose_payment() {
 		DrawLineBottom();
 		
 		gotoxy(34, 10);
-		cout << "청소년	매";
+		cout << "청소년	"<<m->getTeenager()<<"매";
 		gotoxy(34, 11);
-		cout << "성인		매";
+		cout << "성인		"<<m->getAdult()<<"매";
 		gotoxy(34, 12);
-		cout << "우대		매";
+		cout << "우대		"<<m->getUdae()<<"매";
 
 		gotoxy(33, 15);
-		cout << " 결제 금액 : ";
-		//gotoxy(49, 10);
-		//cin >> birth;
+		cout << " 결제 금액 : "<<m->getTotalPrice()<<"원";
 
 		gotoxy(33, 18);
 		cout << "카드번호 >>";
@@ -897,7 +900,7 @@ void Choose_payment() {
 
 
 void print() {
-
+	system("cls");
 	CursorView(0);
 
 	DrawLineTop();
@@ -909,22 +912,26 @@ void print() {
 	cout << "◈ Movie Ticket ◈";
 
 	gotoxy(33, 14);
-	cout << "영화 제목 : ";
+	cout << "영화 제목 : "<<m->getTitle();
 
 	gotoxy(33, 17);
-	cout << "극장 : ";
+	cout << "극장 : "<<m->getArea()<<"  "<<m->getTheater();
 
 	gotoxy(33, 20);
-	cout << "날짜 : ";
+	cout << "날짜 : "<<m->getMonth()<<"월"<<m->getDate()<<"일";
 
 	gotoxy(33, 23);
-	cout << "가격 : ";
+	cout << "가격 : "<<m->getTotalPrice()<<"원";
 
 	gotoxy(33, 26);
-	cout << "관람 인원 : ";
+	cout << "관람 인원 : "<<m->getP_Total()<<"명";
 
 	gotoxy(33, 29);
 	cout << "좌석 : ";
+	for (int i = 0; i < m->getP_Total(); i++) {
+		cout << (char)m->getSeat(i)<<m->getColnum(i)<<"  ";
+	}
+
 
 	gotoxy(33, 32);
 	cout << "예매 번호 : ";
@@ -932,9 +939,8 @@ void print() {
 	gotoxy(15, 35);
 	cout << "솔루션 탐색기 'Movie' > 파일탐색기 폴더 열기 > ticket.txt 확인";
 
-	//m = new member(birth, tel, pw);
-
 	gotoxy(0, 0);
+	system("pause");
 	//system("cls");
 
 }
@@ -1016,9 +1022,15 @@ void Choose_hour(int& x) {
 		}
 
 		if (key == ENTER) {
+			m->setHour(hour[width / 23]);
 			Choose_seat();
 			ch = false;
 		}
 	}
 
+}
+
+int compute(int teenager, int adult, int udea) {
+	int sum = 0;
+	return (teenager * 9000 + adult * 11000 + udea * 6000);
 }
