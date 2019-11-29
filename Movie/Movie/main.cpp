@@ -2,9 +2,9 @@
 #include "movie.h"
 #include "member.h"
 
-movie* blackmoney[9][25]; //9=서울,경기 .... / 25=홍대, 상암, 강남....등등
-movie* JiYoung_82[9][25];
-movie* frozen2[9][25];
+movie* blackmoney[9][15]; //9=서울,경기 .... / 25=홍대, 상암, 강남....등등
+movie* JiYoung_82[9][15];
+movie* frozen2[9][15];
 
 member* m;
 
@@ -13,14 +13,13 @@ int main(void) {
 
 	SetConsoleView();
 	//intro();
-	//CtheaterObject();
-	//join();
-	//theater();
-	//Choose_date();
-	//Choose_movie();
-	//Choose_seat();
+	CtheaterObject();
+	join();
+	theater();
+	Choose_date();
+	Choose_movie();
 
-	//Show_Loading();
+	Show_Loading();
 
 	//Choose_payment();
 
@@ -28,7 +27,7 @@ int main(void) {
 
 
 	for (int i = 0; i < 9; i++) {
-		for (int j = 0; j < 25; j++) {
+		for (int j = 0; j < 15; j++) {
 			delete blackmoney[i][j];
 			delete JiYoung_82[i][j];
 			delete frozen2[i][j];
@@ -50,20 +49,22 @@ void CtheaterObject() {
 	{ "남포", "대연", "대한", "동래", "서면" },
 	{ "거제", "구미", "김해", "마산", "안동" },
 	{ "광양", "군산", "나주", "목포", "순천" } };
+	string frozen2hour[] = { "7:00~8:50","11:20~1:10","22:05~23:55" };
+	string blackmoneyhour[] = { "8:00~10:4","11:30~1:34","10:05~11:55" };
+	string Kim82hour[] = { "7:00~8:50","11:20~1:10","21:55~23:59" };
 
 
 	for (int i = 0; i < 9; i++) {
 		int cnt = 0;
-		for (int j = 0; j < 25; j++) {
-			if (j % 5 == 0 && j != 0) {
+		for (int j = 0; j < 15; j++) {
+			if (j % 3 == 0 && j != 0) {
 				cnt++;
 			}
-			blackmoney[i][j] = new movie("블랙머니", local1[i], local2[i][cnt]);
-			JiYoung_82[i][j] = new movie("82년생 김지영", local1[i], local2[i][cnt]);
-			frozen2[i][j] = new movie("겨울왕국2", local1[i], local2[i][cnt]);
+			blackmoney[i][j] = new movie("블랙머니", local1[i], local2[i][cnt], blackmoneyhour[j%3]);
+			JiYoung_82[i][j] = new movie("82년생 김지영", local1[i], local2[i][cnt], Kim82hour[j % 3]);
+			frozen2[i][j] = new movie("겨울왕국2", local1[i], local2[i][cnt], frozen2hour[j % 3]);
 		}
 	}
-
 }
 
 
@@ -178,6 +179,8 @@ void Choose_date() {
 		cin >> check;
 
 		if (check == 'Y' || check == 'y') {
+			m->setMonth(month);
+			m->setDate(date);
 			ch = false;
 			break;
 		}
@@ -466,9 +469,9 @@ void Choose_movie() {
 
 		switch (y / 2)
 		{
-		case 0: cout << "겨울왕국2"; break;
-		case 1: cout << "블랙머니"; break;
-		case 2: cout << "82년생 김지영"; break;
+		case 0: cout << "겨울왕국2"; m->setTitle("겨울왕국2"); break;
+		case 1: cout << "블랙머니"; m->setTitle("블랙머니"); break;
+		case 2: cout << "82년생 김지영"; m->setTitle("82년생 김지영"); break;
 		}
 
 		gotoxy(40, 15);
@@ -502,7 +505,7 @@ void Choose_movie() {
 		if (key == ENTER) {
 			switch (x / 2) {
 			case 0:
-				//Choose_hour();
+				Choose_hour(y);
 				break;
 			case 1:
 				View_Story(y);
@@ -627,6 +630,154 @@ void View_Review(int y) {
 	system("pause>null");
 }
 
+int theater() {
+	string theater1;
+	string theater2;
+
+	string local1[] = { "서울", "경기", "인천", "강원", "대전/충청", "대구", "부산/울산", "경상", "광주/전라/제주" };
+	string local2[9][5] = { { "강남", "강변", "구로", "천호", "홍대" },
+	{ "구리", "김포",  "시흥", "수원", "용인" },
+	{ "계양", "청라", "인천", "부평", "연수역" },
+	{ "강릉", "원주", "인제", "춘천", "춘천명동" },
+	{ "당진", "대전", "보령", "서산", "세종" },
+	{ "대구", "대구수성", "대구월성", "대구철곡", "대구한일" },
+	{ "남포", "대연", "대한", "동래", "서면" },
+	{ "거제", "구미", "김해", "마산", "안동" },
+	{ "광양", "군산", "나주", "목포", "순천" } };
+
+	int x = 0;
+	int key = 0;
+	int j;
+
+	DrawLineTop();
+	gotoxy(38, 2);
+	cout << "☆영화관 선택☆" << endl;
+	gotoxy(35, 4);
+	cout << "- 지역을 선택해주세요. -" << endl;
+
+	while (true) {
+
+		DrawLineBottom();
+
+		for (int i = 0; i < 9; i++) {
+			gotoxy(35, 10 + (i * 3));
+			cout << local1[i] << endl;
+		}
+
+		DrawUserCursor(x);
+
+		key = _getch();
+		switch (key) {
+		case DOWN:
+			x += 3;
+			break;
+		case UP:
+			x -= 3;
+			break;
+		}
+
+		if (key == ENTER) {
+
+			switch (x / 3) {
+			case 0:
+				j = 0;
+				theater1 = local1[0];
+				break;
+			case 1:
+				j = 1;
+				theater1 = local1[1];
+				break;
+			case 2:
+				j = 2;
+				theater1 = local1[2];
+				break;
+			case 3:
+				j = 3;
+				theater1 = local1[3];
+				break;
+			case 4:
+				j = 4;
+				theater1 = local1[4];
+				break;
+			case 5:
+				j = 5;
+				theater1 = local1[5];
+				break;
+			case 6:
+				j = 6;
+				theater1 = local1[6];
+				break;
+			case 8:
+				j = 8;
+				theater1 = local1[7];
+				break;
+			}
+			m->setArea(theater1);
+			break;
+		}
+	}
+	system("cls");
+
+	DrawLineTop();
+	gotoxy(38, 2);
+	cout << "☆영화관 선택☆" << endl;
+	gotoxy(35, 4);
+	cout << "- 극장을 선택해주세요. -" << endl;
+
+	x = 0;
+	while (true) {
+		DrawLineBottom();
+
+		for (int i = 0; i < 5; i++) {
+			gotoxy(42, 15 + (i * 3));
+			cout << local2[j][i] << endl;
+		}
+
+		DrawUserCursor2(x);
+
+		key = _getch();
+		switch (key) {
+		case DOWN:
+			x += 3;
+			break;
+		case UP:
+			x -= 3;
+			break;
+		}
+
+		if (key == ENTER) {
+			switch (x / 3) {
+			case 0:
+				theater2 = local2[j][0];
+				gotoxy(50, 11);
+				break;
+			case 1:
+				theater2 = local2[j][1];
+				gotoxy(50, 11);
+				break;
+			case 2:
+				theater2 = local2[j][2];
+				gotoxy(50, 11);
+				break;
+			case 3:
+				theater2 = local2[j][3];
+				gotoxy(50, 11);
+				break;
+			case 4:
+				theater2 = local2[j][4];
+				gotoxy(50, 11);
+				break;
+			case 5:
+				theater2 = local2[j][5];
+				gotoxy(50, 11);
+				break;
+			}
+			m->setTheater(theater2);
+			break;
+		}
+	}
+	return 1;
+}
 void Show_Loading() {
 	system("cls");
 
@@ -780,3 +931,89 @@ void print() {
 		//system("cls");
 
 }
+=======
+void Choose_payment() {}
+
+void Choose_hour(int& x){
+	bool ch = true;
+	int cnt = 0, key=0, width=0;
+	string area, theater, hour[3], title;
+	area = m->getArea();
+	theater = m->getTheater();
+	title = m->getTitle();
+
+	switch (x / 2)
+	{
+		case 0: {
+			for (int i = 0; i<9; i++)
+				for (int j = 0; j < 15; j++) {
+					if (area == frozen2[i][j]->getTheater1() && theater == frozen2[i][j]->getTheater2()) {
+						hour[cnt] = frozen2[i][j]->getHour();
+						/*gotoxy((cnt+1) * 20, 20);
+						cout << hour[cnt];*/
+						cnt++;
+					}
+				}
+		}break;//겨울왕국2를 선택했다는 뜻
+		case 1: {
+			for (int i = 0; i<9; i++)
+				for (int j = 0; j < 15; j++) {
+					if (area == blackmoney[i][j]->getTheater1() && theater == blackmoney[i][j]->getTheater2()) {
+						hour[cnt] = blackmoney[i][j]->getHour();
+						cnt++;
+					}
+				}
+		}break; //블랙머니
+		case 2: {
+			for (int i = 0; i<9; i++)
+				for (int j = 0; j < 15; j++) {
+					if (area == JiYoung_82[i][j]->getTheater1() && theater == JiYoung_82[i][j]->getTheater2()) {
+						hour[cnt] = JiYoung_82[i][j]->getHour();
+						cnt++;
+					}
+				}
+		}break;//82년생 김지영
+	}
+
+	system("cls");
+	DrawLineTop();
+	gotoxy(41, 3);
+	cout << "☆시간 선택☆";
+
+	while (true) {
+
+		DrawLineBottom3();
+
+		gotoxy(16, 14);
+		cout << title;
+		gotoxy(40, 14);
+		cout << title;
+		gotoxy(63, 14);
+		cout << title;
+
+		gotoxy(16, 17);
+		cout << hour[0];
+		gotoxy(40, 17);
+		cout << hour[1];
+		gotoxy(63, 17);
+		cout << hour[2];
+
+		DrawUserCursor5(width);
+
+		key = _getch();
+		switch (key) {
+			case RIGHT:
+				width += 23;
+				break;
+			case LEFT:
+				width -= 23;
+				break;
+		}
+
+		if (key == ENTER) {
+			Choose_seat();
+		}
+	}
+
+}
+>>>>>>> 4a4a6b6129ba76ab89f43c840c4de3679860bcc8

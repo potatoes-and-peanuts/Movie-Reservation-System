@@ -129,8 +129,13 @@ void DrawLineBottom3() { //시간 선택 화면 디자인을 위한 테두리선
 	gotoxy(79, 35);
 	cout << a << b[5];   // ┘출력
 
+<<<<<<< HEAD
 	
 	//가운데 선 2개
+=======
+
+						 //가운데 선 2개
+>>>>>>> 4a4a6b6129ba76ab89f43c840c4de3679860bcc8
 	for (n = 0; n < 24; n++) {
 		gotoxy(32, 11 + n);
 		cout << a << b[2];
@@ -140,7 +145,10 @@ void DrawLineBottom3() { //시간 선택 화면 디자인을 위한 테두리선
 	gotoxy(0, 0);
 }
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 4a4a6b6129ba76ab89f43c840c4de3679860bcc8
 void CursorView(char show)//커서숨기기
 {
 	HANDLE hConsole;
@@ -178,4 +186,11 @@ void DrawUserCursor3(int& x) {
 void DrawUserCursor4(int& y) { //좌우
 	if (y > 4) y = 0;
 	else if (y < 0) y = 4;
+}
+
+void DrawUserCursor5(int& x) { //시간 선택 화면 좌우
+	if (x > 46) x = 0;
+	else if (x<0) x = 46;
+	gotoxy(20+x, 20);
+	cout << "▲";
 }

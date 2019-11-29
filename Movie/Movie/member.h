@@ -5,6 +5,20 @@ public:
 	member();
 	member(int birth, int tel, int pw);
 
+<<<<<<< HEAD
+=======
+	void setArea(string area);
+	string getArea();
+	void setTheater(string theater);
+	string getTheater();
+	void setMonth(int month);
+	void setDate(int date);
+	void setTitle(string name);
+	string getTitle();
+
+	
+
+>>>>>>> 4a4a6b6129ba76ab89f43c840c4de3679860bcc8
 	int getBirth();
 	int getTel();
 	int getPw();
@@ -20,6 +34,7 @@ private:
 	//미사용
 	int date;
 
+<<<<<<< HEAD
 	/*
 	int card_num;
 	int expiry_date;
@@ -27,6 +42,10 @@ private:
 	int legal_birth;
 	*/
 
+=======
+	string area; //지역
+	string theater; //극장
+>>>>>>> 4a4a6b6129ba76ab89f43c840c4de3679860bcc8
 	string movie_name;
 
 	

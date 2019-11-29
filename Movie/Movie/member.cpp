@@ -12,6 +12,48 @@ member::member(int birth, int tel, int pw)
 	this->pw = pw;
 }
 
+<<<<<<< HEAD
+=======
+void member::setArea(string area)
+{
+	this->area = area;
+}
+
+string member::getArea()
+{
+	return this->area;
+}
+
+void member::setTheater(string theater)
+{
+	this->theater = theater;
+}
+
+string member::getTheater()
+{
+	return this->theater;
+}
+
+void member::setMonth(int month)
+{
+	this->month = month;
+}
+
+void member::setDate(int date)
+{
+	this->date = date;
+}
+
+void member::setTitle(string name)
+{
+	this->movie_name = name;
+}
+
+string member::getTitle()
+{
+	return this->movie_name;
+}
+>>>>>>> 4a4a6b6129ba76ab89f43c840c4de3679860bcc8
 
 int member::getBirth()
 {
