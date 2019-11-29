@@ -12,7 +12,7 @@ member* m;
 int main(void) {
 
 	SetConsoleView();
-	//intro();
+	intro();
 	CtheaterObject();
 	join();
 	theater();
@@ -20,7 +20,6 @@ int main(void) {
 	Choose_movie();
 
 	print();
-
 
 	for (int i = 0; i < 9; i++) {
 		for (int j = 0; j < 15; j++) {
@@ -71,11 +70,11 @@ void join() {
 
 	CursorView(0);
 
-	while (ch) {
-		DrawLineTop();
-		gotoxy(38, 3);
-		cout << "☆간편 로그인☆";
+	DrawLineTop();
+	gotoxy(38, 3);
+	cout << "☆간편 로그인☆";
 
+	while (ch) {
 		DrawLineBottom();
 
 		gotoxy(30, 10);
@@ -139,14 +138,13 @@ void Choose_date() {
 
 	CursorView(0);
 
+	DrawLineTop();
+	gotoxy(39, 2);
+	cout << "☆날짜 선택☆";
+	gotoxy(35, 4);
+	cout << "- 날짜를 선택해주세요. -";
+
 	while (true) {
-
-		DrawLineTop();
-
-		gotoxy(39, 2);
-		cout << "☆날짜 선택☆";
-		gotoxy(35, 4);
-		cout << "- 날짜를 선택해주세요. -";
 
 		DrawLineBottom();
 
@@ -327,7 +325,7 @@ int Choose_seat() {
 	if (p_total <= 0 || p_total > 19) {
 		while (true) {
 			gotoxy(35, 13);
-			cout << "***1~19 사이의 인원 입력하세요.***";
+			cout << "***관람인원이 없습니다.***";
 
 			gotoxy(49, 10);
 			cout << "   ";
@@ -818,7 +816,7 @@ void Show_Loading() {
 	Sleep(1000);
 
 	system("cls");
-	gotoxy(30, 15);
+	gotoxy(34, 15);
 	cout << "* 영수증 출력 중... *";
 	gotoxy(38, 17);
 	cout << "□□□□□";
@@ -835,7 +833,7 @@ void Show_Loading() {
 	gotoxy(38, 17);
 	cout << "■■■■";
 	Sleep(500);
-	gotoxy(29, 15);
+	gotoxy(27, 15);
 	cout << "* 영수증 출력이 완료되었습니다! *";
 	gotoxy(37, 17);
 	cout << "■■■■■";
@@ -891,17 +889,20 @@ void Choose_payment() {
 		gotoxy(51, 27);
 		cin >> legal_birth;
 
-		//m = new member(birth, tel, pw);
-
 		system("cls");
 		Show_Loading();
 }
 
-
-
 void print() {
 	system("cls");
 	CursorView(0);
+
+	srand((unsigned int)time(NULL));
+
+	int num = (rand() % 4) + 1;
+	string ReserNum[] = { "K1562H561", "J9843T18614", "E1896W5131", "Q174R5461", "G15646M115" };
+
+	ofstream out("ticket.txt");
 
 	DrawLineTop();
 	gotoxy(38, 3);
@@ -910,38 +911,48 @@ void print() {
 
 	gotoxy(37, 10);
 	cout << "◈ Movie Ticket ◈";
+	out << "◈ Movie Ticket ◈" << endl;
 
 	gotoxy(33, 14);
 	cout << "영화 제목 : "<<m->getTitle();
+	out << "영화 제목 : " << m->getTitle() << endl;
 
 	gotoxy(33, 17);
 	cout << "극장 : "<<m->getArea()<<"  "<<m->getTheater();
+	out << "극장 : " << m->getArea() << "    "<< m->getTheater() << endl;
 
 	gotoxy(33, 20);
 	cout << "날짜 : "<<m->getMonth()<<"월"<<m->getDate()<<"일";
+	out << "날짜 : " << m->getMonth() << "월" << m->getDate() << "일" << endl;
 
 	gotoxy(33, 23);
 	cout << "가격 : "<<m->getTotalPrice()<<"원";
+	out << "가격 : " << m->getTotalPrice() << "원" << endl;
 
 	gotoxy(33, 26);
 	cout << "관람 인원 : "<<m->getP_Total()<<"명";
+	out << "관람 인원 : " << m->getP_Total() << "명" << endl;
 
 	gotoxy(33, 29);
 	cout << "좌석 : ";
+	out << "좌석 : ";
 	for (int i = 0; i < m->getP_Total(); i++) {
 		cout << (char)m->getSeat(i)<<m->getColnum(i)<<"  ";
+		out << (char)m->getSeat(i) << m->getColnum(i) << "  ";
 	}
-
+	out << "\n";
 
 	gotoxy(33, 32);
-	cout << "예매 번호 : ";
+	cout << "예매 번호 : " << ReserNum[num];
+	out << "예매 번호 : " << ReserNum[num] << endl;
+	out << "-즐거운 관람하세요~!-" << endl;
 
 	gotoxy(15, 35);
 	cout << "솔루션 탐색기 'Movie' > 파일탐색기 폴더 열기 > ticket.txt 확인";
 
-	gotoxy(0, 0);
-	system("pause");
-	//system("cls");
+	out.close();
+
+	system("pause>null");
 
 }
 

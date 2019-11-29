@@ -12,6 +12,12 @@ void gotoxy(int x, int y) {
 	SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), Pos);
 }
 
+void textcolor(int foreground, int background)
+{
+	int color = foreground + background * 16;
+	SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), color);
+}
+
 void DrawLineTop() { // '영화관 선택'와 같은 글씨가 있는 박스
 	int i, j;
 	unsigned char a = 0xa6;

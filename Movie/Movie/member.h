@@ -46,15 +46,7 @@ private:
 
 	string hour;
 	int month;
-	//미사용
 	int date;
-
-	/*
-	int card_num;
-	int expiry_date;
-	int card_pw;
-	int legal_birth;
-	*/
 
 	string area; //지역
 	string theater; //극장
