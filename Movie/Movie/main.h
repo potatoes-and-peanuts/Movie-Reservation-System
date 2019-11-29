@@ -68,8 +68,7 @@ void CtheaterObject();
 void join();
 
 void Choose_date();
-void Choose_seat();
-
+int Choose_seat();
 void Choose_movie();
 
 void View_Story(int y);//스토리 파일 입출력
@@ -78,3 +77,5 @@ void View_Review(int y); //리뷰 파일 입출력
 void Choose_payment();
 
 void Show_Loading();
+
+void print();

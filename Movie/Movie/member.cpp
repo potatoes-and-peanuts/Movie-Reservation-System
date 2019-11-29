@@ -12,6 +12,7 @@ member::member(int birth, int tel, int pw)
 	this->pw = pw;
 }
 
+
 int member::getBirth()
 {
 	return this->birth;

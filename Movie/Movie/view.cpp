@@ -78,29 +78,68 @@ void DrawLineBottom2() { //영화 화면의 화면 전환 디자인을 위한 테두리선
 	for (n = 1; n < 7; n++)
 		b[n] = 0xa0 + n;
 
-	gotoxy(17, 12);
+	gotoxy(20, 12);
 	cout << a << b[3];   //┌ 출력
-	for (n = 0; n < 52; n++)
+	for (n = 0; n < 49; n++)
 		cout << a << b[1];   // ─ 출력
 	cout << a << b[4] << endl;   // ┐출력
 
-	
-	for (n = 0; n < 19; n++) {
-		gotoxy(17, 13+n);
+	for (n = 0; n < 21; n++) {
+		gotoxy(20, 13+n);
 		cout << a << b[2];
-		for (m = 0; m < 13; m++) //빈줄
-			cout << "    ";
 		gotoxy(70, 13+n);
 		cout << a << b[2] << endl;
 	}
 
-	gotoxy(17, 31);
+	gotoxy(20, 34);
 	cout << a << b[6];   // └출력
-	for (n = 0; n < 51; n++)    //─ 출력
+	for (n = 0; n < 48; n++)    //─ 출력
 		cout << a << b[1];
-	gotoxy(70, 31);
+	gotoxy(70, 34);
 	cout << a << b[5] << endl;   // ┘출력
 }
+
+void DrawLineBottom3() { //시간 선택 화면 디자인을 위한 테두리선
+	int n;
+	unsigned char a = 0xa6;
+	unsigned char b[7];
+
+	DrawLineBottom();
+
+	for (n = 1; n < 7; n++)
+		b[n] = 0xa0 + n;
+
+	gotoxy(8, 10);
+	cout << a << b[3];   //┌ 출력
+	for (n = 0; n < 70; n++)
+		cout << a << b[1];   // ─ 출력
+	cout << a << b[4];   // ┐출력
+
+	for (n = 0; n < 24; n++) {
+		gotoxy(8, 11 + n);
+		cout << a << b[2];
+		gotoxy(79, 11 + n);
+		cout << a << b[2];
+	}
+
+	gotoxy(8, 35);
+	cout << a << b[6];   // └출력
+	for (n = 0; n < 70; n++)    //─ 출력
+		cout << a << b[1];
+	gotoxy(79, 35);
+	cout << a << b[5];   // ┘출력
+
+	
+	//가운데 선 2개
+	for (n = 0; n < 24; n++) {
+		gotoxy(32, 11 + n);
+		cout << a << b[2];
+		gotoxy(56, 11 + n);
+		cout << a << b[2] << endl;
+	}
+	gotoxy(0, 0);
+}
+
 
 void CursorView(char show)//커서숨기기
 {
@@ -132,8 +171,8 @@ void DrawUserCursor2(int& x) { //커서 그리기
 void DrawUserCursor3(int& x) {
 	if (x > 4) x = 0;
 	else if (x < 0) x = 4;
-	gotoxy(35, 15 + x);
-	cout << "▶";
+	gotoxy(55, 15 + x);
+	cout << "◀";
 }
 
 void DrawUserCursor4(int& y) { //좌우

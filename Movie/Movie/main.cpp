@@ -22,6 +22,10 @@ int main(void) {
 
 	//Show_Loading();
 
+	//Choose_payment();
+
+	print();
+
 
 	for (int i = 0; i < 9; i++) {
 		for (int j = 0; j < 25; j++) {
@@ -217,7 +221,7 @@ int check_seat(int seat[9][13], char row, int col) {
 	else return 0;
 }
 
-void Choose_seat() {
+int Choose_seat() {
 	system("cls");
 
 	int i, j;
@@ -438,6 +442,8 @@ void Choose_seat() {
 	}
 
 	//system("cls");
+
+	return 0;
 }
 
 void Choose_movie() {
@@ -676,4 +682,101 @@ void Show_Loading() {
 
 }
 
-void Choose_payment() {}
+void Choose_payment() {
+	int card_num;
+	int expiry_date;
+	int card_pw;
+	int legal_birth;
+
+	bool ch = true;
+
+	CursorView(0);
+
+	while (ch) {
+		DrawLineTop();
+		gotoxy(38, 3);
+		cout << "☆결제 화면☆";
+
+		DrawLineBottom();
+		
+		gotoxy(34, 10);
+		cout << "청소년	매";
+		gotoxy(34, 11);
+		cout << "성인		매";
+		gotoxy(34, 12);
+		cout << "우대		매";
+
+		gotoxy(33, 15);
+		cout << " 결제 금액 : ";
+		//gotoxy(49, 10);
+		//cin >> birth;
+
+		gotoxy(33, 18);
+		cout << "카드번호 >>";
+		gotoxy(45, 18);
+		cin >> card_num;
+
+		gotoxy(33, 21);
+		cout << "유효기간 >>";
+		gotoxy(45, 21);
+		cin >> expiry_date;
+
+		gotoxy(33, 24);
+		cout << "비밀번호 >>   **";
+		gotoxy(45, 24);
+		cin >> card_pw;
+
+		gotoxy(33, 27);
+		cout << "법정생일(6자리)>>";
+		gotoxy(51, 27);
+		cin >> legal_birth;
+
+		//m = new member(birth, tel, pw);
+
+		system("cls");
+	}
+}
+
+
+void print() {
+
+	CursorView(0);
+
+		DrawLineTop();
+		gotoxy(38, 3);
+		cout << "☆영수증 확인☆";
+		DrawLineBottom2();
+
+		gotoxy(37, 10);
+		cout << "◈ Movie Ticket ◈";
+
+		gotoxy(33, 14);
+		cout << "영화 제목 : ";
+
+		gotoxy(33, 17);
+		cout << "극장 : ";
+
+		gotoxy(33, 20);
+		cout << "날짜 : ";
+
+		gotoxy(33, 23);
+		cout << "가격 : ";
+
+		gotoxy(33, 26);
+		cout << "관람 인원 : ";
+
+		gotoxy(33, 29);
+		cout << "좌석 : ";
+
+		gotoxy(33, 32);
+		cout << "예매 번호 : ";
+
+		gotoxy(15, 35);
+		cout << "솔루션 탐색기 'Movie' > 파일탐색기 폴더 열기 > ticket.txt 확인";
+
+		//m = new member(birth, tel, pw);
+
+		gotoxy(0, 0);
+		//system("cls");
+
+}
