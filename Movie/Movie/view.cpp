@@ -115,23 +115,23 @@ void DrawLineBottom3() { //시간 선택 화면 디자인을 위한 테두리선
 		cout << a << b[1];   // ─ 출력
 	cout << a << b[4];   // ┐출력
 
-	for (n = 0; n < 24; n++) {
+	for (n = 0; n < 12; n++) {
 		gotoxy(8, 11 + n);
 		cout << a << b[2];
 		gotoxy(79, 11 + n);
 		cout << a << b[2];
 	}
 
-	gotoxy(8, 35);
+	gotoxy(8, 23);
 	cout << a << b[6];   // └출력
 	for (n = 0; n < 70; n++)    //─ 출력
 		cout << a << b[1];
-	gotoxy(79, 35);
+	gotoxy(79, 23);
 	cout << a << b[5];   // ┘출력
 
 
 	//가운데 선 2개
-	for (n = 0; n < 24; n++) {
+	for (n = 0; n < 12; n++) {
 		gotoxy(32, 11 + n);
 		cout << a << b[2];
 		gotoxy(56, 11 + n);
@@ -170,7 +170,7 @@ void DrawUserCursor2(int& x) { //커서 그리기
 void DrawUserCursor3(int& x) {
 	if (x > 4) x = 0;
 	else if (x < 0) x = 4;
-	gotoxy(55, 15 + x);
+	gotoxy(55, 23 + x);
 	cout << "◀";
 }
 

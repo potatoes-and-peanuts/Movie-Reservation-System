@@ -19,10 +19,6 @@ int main(void) {
 	Choose_date();
 	Choose_movie();
 
-	Show_Loading();
-
-	//Choose_payment();
-
 	print();
 
 
@@ -441,7 +437,9 @@ int Choose_seat() {
 		if (cnt > p_total) {
 			Sleep(1000);
 			Choose_payment();
+			break;
 		}
+		break;
 	}
 
 	
@@ -450,6 +448,7 @@ int Choose_seat() {
 }
 
 void Choose_movie() {
+	bool ch = true;
 	int x = 0, y = 0;
 	int key = 0;
 
@@ -460,11 +459,11 @@ void Choose_movie() {
 	gotoxy(38, 3);
 	cout << "☆영화 예매☆" << endl;
 
-	while (true) {
+	while (ch) {
 		gotoxy(38, 3);
 		cout << "☆영화 예매☆" << endl;
-		DrawLineBottom();
-		gotoxy(40, 10);
+		DrawLineBottom2();
+		gotoxy(40, 18);
 		DrawUserCursor4(y);
 
 		switch (y / 2)
@@ -474,14 +473,20 @@ void Choose_movie() {
 		case 2: cout << "82년생 김지영"; m->setTitle("82년생 김지영"); break;
 		}
 
-		gotoxy(40, 15);
+		gotoxy(40, 23);
 		cout << "예매하기";
 
-		gotoxy(40, 17);
+		gotoxy(40, 25);
 		cout << "줄거리보기";
 
-		gotoxy(40, 19);
+		gotoxy(40, 27);
 		cout << "리뷰보기";
+
+		gotoxy(3, 23);
+		cout << "<";
+
+		gotoxy(83, 23);
+		cout << ">";
 
 		DrawUserCursor3(x);
 
@@ -505,6 +510,7 @@ void Choose_movie() {
 		if (key == ENTER) {
 			switch (x / 2) {
 			case 0:
+				ch = false;
 				Choose_hour(y);
 				break;
 			case 1:
@@ -830,6 +836,7 @@ void Show_Loading() {
 	cout << "■■■■■";
 	
 	Sleep(500);
+	print();
 
 }
 
@@ -839,13 +846,10 @@ void Choose_payment() {
 	int card_pw;
 	int legal_birth;
 
-	bool ch = true;
-
 	system("cls");
 
 	CursorView(0);
 
-	while (ch) {
 		DrawLineTop();
 		gotoxy(38, 3);
 		cout << "☆결제 화면☆";
@@ -887,8 +891,9 @@ void Choose_payment() {
 		//m = new member(birth, tel, pw);
 
 		system("cls");
-	}
+		Show_Loading();
 }
+
 
 
 void print() {
