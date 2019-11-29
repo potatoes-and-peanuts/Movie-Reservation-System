@@ -4,17 +4,18 @@ class member
 public:
 	member();
 	member(int birth, int tel, int pw);
-<<<<<<< HEAD
+
 	void setArea(string area);
 	string getArea();
 	void setTheater(string theater);
 	string getTheater();
 	void setMonth(int month);
 	void setDate(int date);
-=======
+	void setTitle(string name);
+	string getTitle();
 
 	
->>>>>>> 1f651d981dd5b11eec6d86a4ea614aee5bc550e3
+
 	int getBirth();
 	int getTel();
 	int getPw();

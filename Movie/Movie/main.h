@@ -55,6 +55,7 @@ void DrawUserCursor(int& x);
 void DrawUserCursor2(int& x);
 void DrawUserCursor3(int& x);
 void DrawUserCursor4(int& y);
+void DrawUserCursor5(int& x);
 
 //intro.cpp
 int intro();
@@ -78,3 +79,5 @@ void View_Review(int y); //리뷰 파일 입출력
 void Choose_payment();
 
 void Show_Loading();
+
+void Choose_hour(int& x);

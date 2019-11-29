@@ -102,6 +102,47 @@ void DrawLineBottom2() { //영화 화면의 화면 전환 디자인을 위한 테두리선
 	cout << a << b[5] << endl;   // ┘출력
 }
 
+void DrawLineBottom3() { //시간 선택 화면 디자인을 위한 테두리선
+	int n;
+	unsigned char a = 0xa6;
+	unsigned char b[7];
+
+	DrawLineBottom();
+
+	for (n = 1; n < 7; n++)
+		b[n] = 0xa0 + n;
+
+	gotoxy(8, 10);
+	cout << a << b[3];   //┌ 출력
+	for (n = 0; n < 70; n++)
+		cout << a << b[1];   // ─ 출력
+	cout << a << b[4];   // ┐출력
+
+	for (n = 0; n < 24; n++) {
+		gotoxy(8, 11 + n);
+		cout << a << b[2];
+		gotoxy(79, 11 + n);
+		cout << a << b[2];
+	}
+
+	gotoxy(8, 35);
+	cout << a << b[6];   // └출력
+	for (n = 0; n < 70; n++)    //─ 출력
+		cout << a << b[1];
+	gotoxy(79, 35);
+	cout << a << b[5];   // ┘출력
+
+
+						 //가운데 선 2개
+	for (n = 0; n < 24; n++) {
+		gotoxy(32, 11 + n);
+		cout << a << b[2];
+		gotoxy(56, 11 + n);
+		cout << a << b[2] << endl;
+	}
+	gotoxy(0, 0);
+}
+
 void CursorView(char show)//커서숨기기
 {
 	HANDLE hConsole;
@@ -139,4 +180,11 @@ void DrawUserCursor3(int& x) {
 void DrawUserCursor4(int& y) { //좌우
 	if (y > 4) y = 0;
 	else if (y < 0) y = 4;
+}
+
+void DrawUserCursor5(int& x) { //시간 선택 화면 좌우
+	if (x > 46) x = 0;
+	else if (x<0) x = 46;
+	gotoxy(20+x, 20);
+	cout << "▲";
 }

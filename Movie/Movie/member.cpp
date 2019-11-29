@@ -42,6 +42,16 @@ void member::setDate(int date)
 	this->date = date;
 }
 
+void member::setTitle(string name)
+{
+	this->movie_name = name;
+}
+
+string member::getTitle()
+{
+	return this->movie_name;
+}
+
 int member::getBirth()
 {
 	return this->birth;

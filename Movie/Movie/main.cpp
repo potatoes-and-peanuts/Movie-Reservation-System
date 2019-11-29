@@ -13,14 +13,13 @@ int main(void) {
 
 	SetConsoleView();
 	//intro();
-	//CtheaterObject();
-	//join();
-	//theater();
-	//Choose_date();
-	//Choose_movie();
-	//Choose_seat();
+	CtheaterObject();
+	join();
+	theater();
+	Choose_date();
+	Choose_movie();
 
-	//Show_Loading();
+	Show_Loading();
 
 
 	for (int i = 0; i < 9; i++) {
@@ -62,10 +61,6 @@ void CtheaterObject() {
 			frozen2[i][j] = new movie("겨울왕국2", local1[i], local2[i][cnt], frozen2hour[j % 3]);
 		}
 	}
-<<<<<<< HEAD
-=======
-
->>>>>>> 1f651d981dd5b11eec6d86a4ea614aee5bc550e3
 }
 
 
@@ -468,9 +463,9 @@ void Choose_movie() {
 
 		switch (y / 2)
 		{
-		case 0: cout << "겨울왕국2"; break;
-		case 1: cout << "블랙머니"; break;
-		case 2: cout << "82년생 김지영"; break;
+		case 0: cout << "겨울왕국2"; m->setTitle("겨울왕국2"); break;
+		case 1: cout << "블랙머니"; m->setTitle("블랙머니"); break;
+		case 2: cout << "82년생 김지영"; m->setTitle("82년생 김지영"); break;
 		}
 
 		gotoxy(40, 15);
@@ -504,7 +499,7 @@ void Choose_movie() {
 		if (key == ENTER) {
 			switch (x / 2) {
 			case 0:
-				//Choose_hour();
+				Choose_hour(y);
 				break;
 			case 1:
 				View_Story(y);
@@ -629,7 +624,6 @@ void View_Review(int y) {
 	system("pause>null");
 }
 
-<<<<<<< HEAD
 int theater() {
 	string theater1;
 	string theater2;
@@ -687,23 +681,24 @@ int theater() {
 				j = 1;
 				theater1 = local1[1];
 				break;
+			case 2:
+				j = 2;
+				theater1 = local1[2];
+				break;
 			case 3:
 				j = 3;
-				theater1 = local1[2];
+				theater1 = local1[3];
 				break;
 			case 4:
 				j = 4;
-				theater1 = local1[3];
+				theater1 = local1[4];
 				break;
 			case 5:
 				j = 5;
-				theater1 = local1[4];
+				theater1 = local1[5];
 				break;
 			case 6:
 				j = 6;
-				theater1 = local1[5];
-				break;
-			case 7:
 				theater1 = local1[6];
 				break;
 			case 8:
@@ -777,7 +772,6 @@ int theater() {
 	}
 	return 1;
 }
-=======
 void Show_Loading() {
 	system("cls");
 
@@ -834,4 +828,86 @@ void Show_Loading() {
 }
 
 void Choose_payment() {}
->>>>>>> 1f651d981dd5b11eec6d86a4ea614aee5bc550e3
+
+void Choose_hour(int& x){
+	bool ch = true;
+	int cnt = 0, key=0, width=0;
+	string area, theater, hour[3], title;
+	area = m->getArea();
+	theater = m->getTheater();
+	title = m->getTitle();
+
+	switch (x / 2)
+	{
+		case 0: {
+			for (int i = 0; i<9; i++)
+				for (int j = 0; j < 15; j++) {
+					if (area == frozen2[i][j]->getTheater1() && theater == frozen2[i][j]->getTheater2()) {
+						hour[cnt] = frozen2[i][j]->getHour();
+						/*gotoxy((cnt+1) * 20, 20);
+						cout << hour[cnt];*/
+						cnt++;
+					}
+				}
+		}break;//겨울왕국2를 선택했다는 뜻
+		case 1: {
+			for (int i = 0; i<9; i++)
+				for (int j = 0; j < 15; j++) {
+					if (area == blackmoney[i][j]->getTheater1() && theater == blackmoney[i][j]->getTheater2()) {
+						hour[cnt] = blackmoney[i][j]->getHour();
+						cnt++;
+					}
+				}
+		}break; //블랙머니
+		case 2: {
+			for (int i = 0; i<9; i++)
+				for (int j = 0; j < 15; j++) {
+					if (area == JiYoung_82[i][j]->getTheater1() && theater == JiYoung_82[i][j]->getTheater2()) {
+						hour[cnt] = JiYoung_82[i][j]->getHour();
+						cnt++;
+					}
+				}
+		}break;//82년생 김지영
+	}
+
+	system("cls");
+	DrawLineTop();
+	gotoxy(41, 3);
+	cout << "☆시간 선택☆";
+
+	while (true) {
+
+		DrawLineBottom3();
+
+		gotoxy(16, 14);
+		cout << title;
+		gotoxy(40, 14);
+		cout << title;
+		gotoxy(63, 14);
+		cout << title;
+
+		gotoxy(16, 17);
+		cout << hour[0];
+		gotoxy(40, 17);
+		cout << hour[1];
+		gotoxy(63, 17);
+		cout << hour[2];
+
+		DrawUserCursor5(width);
+
+		key = _getch();
+		switch (key) {
+			case RIGHT:
+				width += 23;
+				break;
+			case LEFT:
+				width -= 23;
+				break;
+		}
+
+		if (key == ENTER) {
+			Choose_seat();
+		}
+	}
+
+}
