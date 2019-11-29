@@ -12,8 +12,6 @@ member::member(int birth, int tel, int pw)
 	this->pw = pw;
 }
 
-<<<<<<< HEAD
-=======
 void member::setArea(string area)
 {
 	this->area = area;
@@ -53,7 +51,6 @@ string member::getTitle()
 {
 	return this->movie_name;
 }
->>>>>>> 4a4a6b6129ba76ab89f43c840c4de3679860bcc8
 
 int member::getBirth()
 {

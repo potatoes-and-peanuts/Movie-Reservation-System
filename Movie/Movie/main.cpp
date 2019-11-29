@@ -439,12 +439,12 @@ int Choose_seat() {
 
 
 		if (cnt > p_total) {
-			Sleep(2000);
-			break;
+			Sleep(1000);
+			Choose_payment();
 		}
 	}
 
-	//system("cls");
+	
 
 	return 0;
 }
@@ -841,6 +841,8 @@ void Choose_payment() {
 
 	bool ch = true;
 
+	system("cls");
+
 	CursorView(0);
 
 	while (ch) {
@@ -893,50 +895,48 @@ void print() {
 
 	CursorView(0);
 
-		DrawLineTop();
-		gotoxy(38, 3);
-		cout << "☆영수증 확인☆";
-		DrawLineBottom2();
+	DrawLineTop();
+	gotoxy(38, 3);
+	cout << "☆영수증 확인☆";
+	DrawLineBottom2();
 
-		gotoxy(37, 10);
-		cout << "◈ Movie Ticket ◈";
+	gotoxy(37, 10);
+	cout << "◈ Movie Ticket ◈";
 
-		gotoxy(33, 14);
-		cout << "영화 제목 : ";
+	gotoxy(33, 14);
+	cout << "영화 제목 : ";
 
-		gotoxy(33, 17);
-		cout << "극장 : ";
+	gotoxy(33, 17);
+	cout << "극장 : ";
 
-		gotoxy(33, 20);
-		cout << "날짜 : ";
+	gotoxy(33, 20);
+	cout << "날짜 : ";
 
-		gotoxy(33, 23);
-		cout << "가격 : ";
+	gotoxy(33, 23);
+	cout << "가격 : ";
 
-		gotoxy(33, 26);
-		cout << "관람 인원 : ";
+	gotoxy(33, 26);
+	cout << "관람 인원 : ";
 
-		gotoxy(33, 29);
-		cout << "좌석 : ";
+	gotoxy(33, 29);
+	cout << "좌석 : ";
 
-		gotoxy(33, 32);
-		cout << "예매 번호 : ";
+	gotoxy(33, 32);
+	cout << "예매 번호 : ";
 
-		gotoxy(15, 35);
-		cout << "솔루션 탐색기 'Movie' > 파일탐색기 폴더 열기 > ticket.txt 확인";
+	gotoxy(15, 35);
+	cout << "솔루션 탐색기 'Movie' > 파일탐색기 폴더 열기 > ticket.txt 확인";
 
-		//m = new member(birth, tel, pw);
+	//m = new member(birth, tel, pw);
 
-		gotoxy(0, 0);
-		//system("cls");
+	gotoxy(0, 0);
+	//system("cls");
 
 }
-=======
-void Choose_payment() {}
 
-void Choose_hour(int& x){
+void Choose_hour(int& x) {
 	bool ch = true;
-	int cnt = 0, key=0, width=0;
+	int cnt = 0, key = 0, width = 0;
 	string area, theater, hour[3], title;
 	area = m->getArea();
 	theater = m->getTheater();
@@ -944,35 +944,35 @@ void Choose_hour(int& x){
 
 	switch (x / 2)
 	{
-		case 0: {
-			for (int i = 0; i<9; i++)
-				for (int j = 0; j < 15; j++) {
-					if (area == frozen2[i][j]->getTheater1() && theater == frozen2[i][j]->getTheater2()) {
-						hour[cnt] = frozen2[i][j]->getHour();
-						/*gotoxy((cnt+1) * 20, 20);
-						cout << hour[cnt];*/
-						cnt++;
-					}
+	case 0: {
+		for (int i = 0; i < 9; i++)
+			for (int j = 0; j < 15; j++) {
+				if (area == frozen2[i][j]->getTheater1() && theater == frozen2[i][j]->getTheater2()) {
+					hour[cnt] = frozen2[i][j]->getHour();
+					/*gotoxy((cnt+1) * 20, 20);
+					cout << hour[cnt];*/
+					cnt++;
 				}
-		}break;//겨울왕국2를 선택했다는 뜻
-		case 1: {
-			for (int i = 0; i<9; i++)
-				for (int j = 0; j < 15; j++) {
-					if (area == blackmoney[i][j]->getTheater1() && theater == blackmoney[i][j]->getTheater2()) {
-						hour[cnt] = blackmoney[i][j]->getHour();
-						cnt++;
-					}
+			}
+	}break;//겨울왕국2를 선택했다는 뜻
+	case 1: {
+		for (int i = 0; i < 9; i++)
+			for (int j = 0; j < 15; j++) {
+				if (area == blackmoney[i][j]->getTheater1() && theater == blackmoney[i][j]->getTheater2()) {
+					hour[cnt] = blackmoney[i][j]->getHour();
+					cnt++;
 				}
-		}break; //블랙머니
-		case 2: {
-			for (int i = 0; i<9; i++)
-				for (int j = 0; j < 15; j++) {
-					if (area == JiYoung_82[i][j]->getTheater1() && theater == JiYoung_82[i][j]->getTheater2()) {
-						hour[cnt] = JiYoung_82[i][j]->getHour();
-						cnt++;
-					}
+			}
+	}break; //블랙머니
+	case 2: {
+		for (int i = 0; i < 9; i++)
+			for (int j = 0; j < 15; j++) {
+				if (area == JiYoung_82[i][j]->getTheater1() && theater == JiYoung_82[i][j]->getTheater2()) {
+					hour[cnt] = JiYoung_82[i][j]->getHour();
+					cnt++;
 				}
-		}break;//82년생 김지영
+			}
+	}break;//82년생 김지영
 	}
 
 	system("cls");
@@ -980,7 +980,7 @@ void Choose_hour(int& x){
 	gotoxy(41, 3);
 	cout << "☆시간 선택☆";
 
-	while (true) {
+	while (ch) {
 
 		DrawLineBottom3();
 
@@ -1002,18 +1002,18 @@ void Choose_hour(int& x){
 
 		key = _getch();
 		switch (key) {
-			case RIGHT:
-				width += 23;
-				break;
-			case LEFT:
-				width -= 23;
-				break;
+		case RIGHT:
+			width += 23;
+			break;
+		case LEFT:
+			width -= 23;
+			break;
 		}
 
 		if (key == ENTER) {
 			Choose_seat();
+			ch = false;
 		}
 	}
 
 }
->>>>>>> 4a4a6b6129ba76ab89f43c840c4de3679860bcc8

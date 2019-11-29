@@ -79,8 +79,6 @@ void Choose_payment();
 
 void Show_Loading();
 
-<<<<<<< HEAD
 void print();
-=======
+
 void Choose_hour(int& x);
->>>>>>> 4a4a6b6129ba76ab89f43c840c4de3679860bcc8

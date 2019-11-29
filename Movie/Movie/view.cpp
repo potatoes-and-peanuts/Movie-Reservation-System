@@ -69,7 +69,7 @@ void DrawLineBottom() { // '영화관 선택'와 같은 글씨 아래에 있는 박스 (이벤트 발
 }
 
 void DrawLineBottom2() { //영화 화면의 화면 전환 디자인을 위한 테두리선
-	int n, m;
+	int n;
 	unsigned char a = 0xa6;
 	unsigned char b[7];
 
@@ -129,13 +129,8 @@ void DrawLineBottom3() { //시간 선택 화면 디자인을 위한 테두리선
 	gotoxy(79, 35);
 	cout << a << b[5];   // ┘출력
 
-<<<<<<< HEAD
-	
-	//가운데 선 2개
-=======
 
-						 //가운데 선 2개
->>>>>>> 4a4a6b6129ba76ab89f43c840c4de3679860bcc8
+	//가운데 선 2개
 	for (n = 0; n < 24; n++) {
 		gotoxy(32, 11 + n);
 		cout << a << b[2];
@@ -145,10 +140,6 @@ void DrawLineBottom3() { //시간 선택 화면 디자인을 위한 테두리선
 	gotoxy(0, 0);
 }
 
-<<<<<<< HEAD
-
-=======
->>>>>>> 4a4a6b6129ba76ab89f43c840c4de3679860bcc8
 void CursorView(char show)//커서숨기기
 {
 	HANDLE hConsole;
