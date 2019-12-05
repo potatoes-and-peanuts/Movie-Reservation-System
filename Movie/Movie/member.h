@@ -1,5 +1,4 @@
 #pragma once
-
 static int cnt=0, cnt2=0;
 
 class member
@@ -7,7 +6,6 @@ class member
 public:
 	member();
 	member(int birth, int tel, int pw);
-
 
 	void setArea(string area);
 	void setTheater(string theater);
@@ -37,7 +35,6 @@ public:
 	int getBirth();
 	int getTel();
 	int getPw();
-
 
 	virtual ~member();
 private:

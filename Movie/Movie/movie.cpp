@@ -3,7 +3,6 @@
 using namespace std;
 #include "movie.h"
 
-
 movie::movie()
 {
 }
@@ -15,13 +14,6 @@ movie::movie(string title, string theater1, string theater2, string hour)
 	m_theater2 = theater2;
 	m_hour = hour;
 }
-
-/*movie::movie(string theater1, string theater2, string hour)
-{
-	m_hour = hour;
-	m_theater1 = theater1;
-	m_theater2 = theater2;
-}*/
 
 string movie::getTheater1()
 {
@@ -42,8 +34,6 @@ string movie::getHour()
 {
 	return this->m_hour;
 }
-
-
 
 movie::~movie()
 {

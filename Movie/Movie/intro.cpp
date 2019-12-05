@@ -89,8 +89,7 @@ void intro() { //시작화면
 	gotoxy(18, 11);
 	cout << "|";
 	////////////////////// M 완성
-
-	Sleep(400);
+	Sleep(600);
 
 	gotoxy(28, 6);
 	cout << "/";
@@ -143,7 +142,7 @@ void intro() { //시작화면
 	gotoxy(27, 7);
 	cout << "＊";
 	//겉
-	Sleep(400);
+	Sleep(600);
 	gotoxy(30, 8);
 	cout << "/";
 	gotoxy(32, 7);
@@ -215,7 +214,7 @@ void intro() { //시작화면
 	gotoxy(42, 8);
 	cout << " ＊";
 	// V완성
-	Sleep(400);
+	Sleep(600);
 
 	gotoxy(64, 5);
 	cout << a << b[1];
@@ -352,7 +351,7 @@ void intro() { //시작화면
 	cout << "＊";
 	//E완성
 
-	Sleep(400);
+	Sleep(600);
 
 	for (i = 0; i < 10; i++) {
 		gotoxy(17, 17 + i);
@@ -435,7 +434,7 @@ void intro() { //시작화면
 	gotoxy(25, 25);
 	cout << "|";
 	//속 B완성
-	Sleep(400);
+	Sleep(600);
 	
 	gotoxy(37, 18); //6->18, 29->35 (6)
 	cout << "/";
@@ -497,8 +496,6 @@ void intro() { //시작화면
 	gotoxy(36, 24);
 	cout << "*";
 
-	Sleep(400);
-
 
 	//30->40 (10), 8->21 (13)
 	gotoxy(40, 21);
@@ -521,6 +518,7 @@ void intro() { //시작화면
 	cout << "＼";
 	//속 O 완성
 
+	Sleep(600);
 	
 	gotoxy(56, 17);
 	cout << "*";
@@ -564,22 +562,15 @@ void intro() { //시작화면
 	}
 	gotoxy(58, 25);
 	cout << "*";
-
-
-	Sleep(400);
-
-
-
-
+	Sleep(600);
+	//X 구현
 
 	gotoxy(38, 31);
 	cout << "~ Loading ~";
-	Sleep(100);
-
-
 	gotoxy(36, 33);
 	cout << "□□□□□□□";
-	Sleep(100);
+	Sleep(300);
+
 	gotoxy(38, 31);
 	cout << "           ";
 	Sleep(300);
@@ -587,23 +578,32 @@ void intro() { //시작화면
 	cout << "~ Loading ~";
 	gotoxy(36, 33);
 	cout << "■";
-	Sleep(300);
+	Sleep(500);
+
 	gotoxy(38, 31);
 	cout << "           ";
 	gotoxy(36, 33);
 	cout << "■■";
 	Sleep(300);
+
 	gotoxy(38, 31);
 	cout << "~ Loading ~";
 	gotoxy(36, 33);
 	cout << "■■■";
-	Sleep(300);
+	Sleep(500);
+
+	gotoxy(38, 31);
+	cout << "           ";
 	gotoxy(36, 33);
 	cout << "■■■■";
 	Sleep(300);
+
+	gotoxy(38, 31);
+	cout << "~ Loading ~";
 	gotoxy(36, 33);
 	cout << "■■■■■";
-	Sleep(300);
+	Sleep(500);
+
 	gotoxy(36, 33);
 	cout << "■■■■■■";
 	Sleep(300);
@@ -612,5 +612,5 @@ void intro() { //시작화면
 
 	Sleep(2000);
 
-	//system("cls");
+	system("cls");
 }

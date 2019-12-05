@@ -13,11 +13,11 @@ int main(void) {
 
 	SetConsoleView();
 	intro();
-	//CtheaterObject();
-	//join();
-	//theater();
-	//Choose_date();
-	//Choose_movie();
+	CtheaterObject();
+	join();
+	theater();
+	Choose_date();
+	Choose_movie();
 
 	//print();
 
@@ -840,7 +840,6 @@ void Show_Loading() {
 	
 	Sleep(500);
 	print();
-
 }
 
 void Choose_payment() {
@@ -953,7 +952,6 @@ void print() {
 	out.close();
 
 	system("pause>null");
-
 }
 
 void Choose_hour(int& x) {
