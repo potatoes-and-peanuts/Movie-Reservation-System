@@ -5,7 +5,7 @@ class member
 {
 public:
 	member();
-	member(int birth, int tel, int pw);
+	member(string birth, string tel, string pw);
 
 	void setArea(string area);
 	void setTheater(string theater);
@@ -32,15 +32,15 @@ public:
 	int getP_Total();
 	int getMonth();
 	int getDate();
-	int getBirth();
-	int getTel();
-	int getPw();
+	string getBirth();
+	string getTel();
+	string getPw();
 
 	virtual ~member();
 private:
-	int birth;
-	int tel;
-	int pw;
+	string birth;
+	string tel;
+	string pw;
 
 	string hour;
 	int month;

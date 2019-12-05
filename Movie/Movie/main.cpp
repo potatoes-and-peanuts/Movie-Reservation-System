@@ -19,8 +19,6 @@ int main(void) {
 	Choose_date();
 	Choose_movie();
 
-	//print();
-
 	for (int i = 0; i < 9; i++) {
 		for (int j = 0; j < 15; j++) {
 			delete blackmoney[i][j];
@@ -64,15 +62,15 @@ void CtheaterObject() {
 
 
 void join() {
-	int birth, tel, pw;
+	string birth, tel, pw;
 	char check;
 	bool ch = true;
 
 	CursorView(0);
 
 	DrawLineTop();
-	gotoxy(38, 3);
-	cout << "☆간편 로그인☆";
+	gotoxy(37, 3);
+	cout << "☆비회원 로그인☆";
 
 	while (ch) {
 		DrawLineBottom();
@@ -368,7 +366,7 @@ int Choose_seat() {
 		cout << "원하는 좌석의 열(번호) :      ";
 
 		gotoxy(83, 20);
-		cin >> &row;
+		cin >> row;
 
 		//알파벳 대문자가 아닐 때
 		if (row <= 64 || row >= 74) {
