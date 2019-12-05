@@ -636,322 +636,6 @@ void View_Review(int y) {
 	}
 	system("pause>null");
 }
-
-int theater() {
-	string theater1;
-	string theater2;
-
-	string local1[] = { "서울", "경기", "인천", "강원", "대전/충청", "대구", "부산/울산", "경상", "광주/전라/제주" };
-	string local2[9][5] = { { "강남", "강변", "구로", "천호", "홍대" },
-	{ "구리", "김포",  "시흥", "수원", "용인" },
-	{ "계양", "청라", "인천", "부평", "연수역" },
-	{ "강릉", "원주", "인제", "춘천", "춘천명동" },
-	{ "당진", "대전", "보령", "서산", "세종" },
-	{ "대구", "대구수성", "대구월성", "대구철곡", "대구한일" },
-	{ "남포", "대연", "대한", "동래", "서면" },
-	{ "거제", "구미", "김해", "마산", "안동" },
-	{ "광양", "군산", "나주", "목포", "순천" } };
-
-	int x = 0;
-	int key = 0;
-	int j;
-
-	DrawLineTop();
-	gotoxy(38, 2);
-	cout << "☆영화관 선택☆" << endl;
-	gotoxy(35, 4);
-	cout << "- 지역을 선택해주세요. -" << endl;
-
-	while (true) {
-
-		DrawLineBottom();
-
-		for (int i = 0; i < 9; i++) {
-			gotoxy(35, 10 + (i * 3));
-			cout << local1[i] << endl;
-		}
-
-		DrawUserCursor(x);
-
-		key = _getch();
-		switch (key) {
-		case DOWN:
-			x += 3;
-			break;
-		case UP:
-			x -= 3;
-			break;
-		}
-
-		if (key == ENTER) {
-
-			switch (x / 3) {
-			case 0:
-				j = 0;
-				theater1 = local1[0];
-				break;
-			case 1:
-				j = 1;
-				theater1 = local1[1];
-				break;
-			case 2:
-				j = 2;
-				theater1 = local1[2];
-				break;
-			case 3:
-				j = 3;
-				theater1 = local1[3];
-				break;
-			case 4:
-				j = 4;
-				theater1 = local1[4];
-				break;
-			case 5:
-				j = 5;
-				theater1 = local1[5];
-				break;
-			case 6:
-				j = 6;
-				theater1 = local1[6];
-				break;
-			case 8:
-				j = 8;
-				theater1 = local1[7];
-				break;
-			}
-			m->setArea(theater1);
-			break;
-		}
-	}
-	system("cls");
-
-	DrawLineTop();
-	gotoxy(38, 2);
-	cout << "☆영화관 선택☆" << endl;
-	gotoxy(35, 4);
-	cout << "- 극장을 선택해주세요. -" << endl;
-
-	x = 0;
-	while (true) {
-		DrawLineBottom();
-
-		for (int i = 0; i < 5; i++) {
-			gotoxy(42, 15 + (i * 3));
-			cout << local2[j][i] << endl;
-		}
-
-		DrawUserCursor2(x);
-
-		key = _getch();
-		switch (key) {
-		case DOWN:
-			x += 3;
-			break;
-		case UP:
-			x -= 3;
-			break;
-		}
-
-		if (key == ENTER) {
-			switch (x / 3) {
-			case 0:
-				theater2 = local2[j][0];
-				gotoxy(50, 11);
-				break;
-			case 1:
-				theater2 = local2[j][1];
-				gotoxy(50, 11);
-				break;
-			case 2:
-				theater2 = local2[j][2];
-				gotoxy(50, 11);
-				break;
-			case 3:
-				theater2 = local2[j][3];
-				gotoxy(50, 11);
-				break;
-			case 4:
-				theater2 = local2[j][4];
-				gotoxy(50, 11);
-				break;
-			case 5:
-				theater2 = local2[j][5];
-				gotoxy(50, 11);
-				break;
-			}
-			m->setTheater(theater2);
-			break;
-		}
-	}
-	return 1;
-}
-void Show_Loading() {
-	system("cls");
-
-	CursorView(0);
-
-	gotoxy(36, 15);
-	cout << "* 결제 중... *";
-	gotoxy(38, 17);
-	cout << "□□□□□";
-	Sleep(500);
-	gotoxy(38, 17);
-	cout << "■";
-	Sleep(500);
-	gotoxy(38, 17);
-	cout << "■■";
-	Sleep(500);
-	gotoxy(38, 17);
-	cout << "■■■";
-	Sleep(500);
-	gotoxy(38, 17);
-	cout << "■■■■";
-	Sleep(500);
-	gotoxy(31, 15);
-	cout << "* 결제가 완료되었습니다! *";
-	gotoxy(37, 17);
-	cout << "■■■■■";
-	Sleep(1000);
-
-	system("cls");
-	gotoxy(34, 15);
-	cout << "* 영수증 출력 중... *";
-	gotoxy(38, 17);
-	cout << "□□□□□";
-	Sleep(500);
-	gotoxy(38, 17);
-	cout << "■";
-	Sleep(500);
-	gotoxy(38, 17);
-	cout << "■■";
-	Sleep(500);
-	gotoxy(38, 17);
-	cout << "■■■";
-	Sleep(500);
-	gotoxy(38, 17);
-	cout << "■■■■";
-	Sleep(500);
-	gotoxy(27, 15);
-	cout << "* 영수증 출력이 완료되었습니다! *";
-	gotoxy(38, 17);
-	cout << "■■■■■";
-	
-	Sleep(500);
-	print();
-}
-
-void Choose_payment() {
-	int card_num;
-	int expiry_date;
-	int card_pw;
-	int legal_birth;
-
-	system("cls");
-
-	CursorView(0);
-
-		DrawLineTop();
-		gotoxy(38, 3);
-		cout << "☆결제 화면☆";
-
-		DrawLineBottom();
-		
-		gotoxy(34, 10);
-		cout << "청소년	"<<m->getTeenager()<<"매";
-		gotoxy(34, 11);
-		cout << "성인		"<<m->getAdult()<<"매";
-		gotoxy(34, 12);
-		cout << "우대		"<<m->getUdae()<<"매";
-
-		gotoxy(33, 15);
-		cout << " 결제 금액 : "<<m->getTotalPrice()<<"원";
-
-		gotoxy(33, 18);
-		cout << "카드번호 >>";
-		gotoxy(45, 18);
-		cin >> card_num;
-
-		gotoxy(33, 21);
-		cout << "유효기간 >>";
-		gotoxy(45, 21);
-		cin >> expiry_date;
-
-		gotoxy(33, 24);
-		cout << "비밀번호 >>   **";
-		gotoxy(45, 24);
-		cin >> card_pw;
-
-		gotoxy(33, 27);
-		cout << "법정생일(6자리)>>";
-		gotoxy(51, 27);
-		cin >> legal_birth;
-
-		system("cls");
-		Show_Loading();
-}
-
-void print() {
-	system("cls");
-	CursorView(0);
-
-	srand((unsigned int)time(NULL));
-
-	int num = (rand() % 4) + 1;
-	string ReserNum[] = { "K1562H561", "J9843T18614", "E1896W5131", "Q174R5461", "G15646M115" };
-
-	ofstream out("ticket.txt");
-
-	DrawLineTop();
-	gotoxy(38, 3);
-	cout << "☆영수증 확인☆";
-	DrawLineBottom2();
-
-	gotoxy(37, 10);
-	cout << "◈ Movie Ticket ◈";
-	out << "◈ Movie Ticket ◈" << endl;
-
-	gotoxy(33, 14);
-	cout << "영화 제목 : "<<m->getTitle();
-	out << "영화 제목 : " << m->getTitle() << endl;
-
-	gotoxy(33, 17);
-	cout << "극장 : "<<m->getArea()<<"  "<<m->getTheater();
-	out << "극장 : " << m->getArea() << "    "<< m->getTheater() << endl;
-
-	gotoxy(33, 20);
-	cout << "날짜 : "<<m->getMonth()<<"월"<<m->getDate()<<"일";
-	out << "날짜 : " << m->getMonth() << "월" << m->getDate() << "일" << endl;
-
-	gotoxy(33, 23);
-	cout << "가격 : "<<m->getTotalPrice()<<"원";
-	out << "가격 : " << m->getTotalPrice() << "원" << endl;
-
-	gotoxy(33, 26);
-	cout << "관람 인원 : "<<m->getP_Total()<<"명";
-	out << "관람 인원 : " << m->getP_Total() << "명" << endl;
-
-	gotoxy(33, 29);
-	cout << "좌석 : ";
-	out << "좌석 : ";
-	for (int i = 0; i < m->getP_Total(); i++) {
-		cout << (char)m->getSeat(i)<<m->getColnum(i)<<"  ";
-		out << (char)m->getSeat(i) << m->getColnum(i) << "  ";
-	}
-	out << "\n";
-
-	gotoxy(33, 32);
-	cout << "예매 번호 : " << ReserNum[num];
-	out << "예매 번호 : " << ReserNum[num] << endl;
-	out << "-즐거운 관람하세요~!-" << endl;
-
-	gotoxy(15, 35);
-	cout << "솔루션 탐색기 'Movie' > 파일탐색기 폴더 열기 > ticket.txt 확인";
-
-	out.close();
-
-	system("pause>null");
-}
-
 void Choose_hour(int& x) {
 	bool ch = true;
 	int cnt = 0, key = 0, width = 0;
@@ -1034,6 +718,326 @@ void Choose_hour(int& x) {
 			ch = false;
 		}
 	}
+}
+
+int theater() {
+	string theater1;
+	string theater2;
+
+	string local1[] = { "서울", "경기", "인천", "강원", "대전/충청", "대구", "부산/울산", "경상", "광주/전라/제주" };
+	string local2[9][5] = { { "강남", "강변", "구로", "천호", "홍대" },
+	{ "구리", "김포",  "시흥", "수원", "용인" },
+	{ "계양", "청라", "인천", "부평", "연수역" },
+	{ "강릉", "원주", "인제", "춘천", "춘천명동" },
+	{ "당진", "대전", "보령", "서산", "세종" },
+	{ "대구", "대구수성", "대구월성", "대구철곡", "대구한일" },
+	{ "남포", "대연", "대한", "동래", "서면" },
+	{ "거제", "구미", "김해", "마산", "안동" },
+	{ "광양", "군산", "나주", "목포", "순천" } };
+
+	int x = 0;
+	int key = 0;
+	int j=0;
+
+	DrawLineTop();
+	gotoxy(38, 2);
+	cout << "☆영화관 선택☆" << endl;
+	gotoxy(35, 4);
+	cout << "- 지역을 선택해주세요. -" << endl;
+
+	while (true) {
+
+		DrawLineBottom();
+
+		for (int i = 0; i < 9; i++) {
+			gotoxy(35, 10 + (i * 3));
+			cout << local1[i] << endl;
+		}
+
+		DrawUserCursor(x);
+
+		key = _getch();
+		switch (key) {
+		case DOWN:
+			x += 3;
+			break;
+		case UP:
+			x -= 3;
+			break;
+		}
+
+		if (key == ENTER) {
+
+			switch (x / 3) {
+			case 0:
+				j = 0;
+				theater1 = local1[0];
+				break;
+			case 1:
+				j = 1;
+				theater1 = local1[1];
+				break;
+			case 2:
+				j = 2;
+				theater1 = local1[2];
+				break;
+			case 3:
+				j = 3;
+				theater1 = local1[3];
+				break;
+			case 4:
+				j = 4;
+				theater1 = local1[4];
+				break;
+			case 5:
+				j = 5;
+				theater1 = local1[5];
+				break;
+			case 6:
+				j = 6;
+				theater1 = local1[6];
+				break;
+			case 7:
+				j = 7;
+				theater1 = local1[7];
+				break;
+			case 8:
+				j = 8;
+				theater1 = local1[8];
+				break;
+			}
+			m->setArea(theater1);
+			break;
+		}
+	}
+	system("cls");
+
+	DrawLineTop();
+	gotoxy(38, 2);
+	cout << "☆영화관 선택☆" << endl;
+	gotoxy(35, 4);
+	cout << "- 극장을 선택해주세요. -" << endl;
+
+	x = 0;
+	while (true) {
+		DrawLineBottom();
+
+		for (int i = 0; i < 5; i++) {
+			gotoxy(42, 15 + (i * 3));
+			cout << local2[j][i] << endl;
+		}
+
+		DrawUserCursor2(x);
+
+		key = _getch();
+		switch (key) {
+		case DOWN:
+			x += 3;
+			break;
+		case UP:
+			x -= 3;
+			break;
+		}
+
+		if (key == ENTER) {
+			switch (x / 3) {
+			case 0:
+				theater2 = local2[j][0];
+				gotoxy(50, 11);
+				break;
+			case 1:
+				theater2 = local2[j][1];
+				gotoxy(50, 11);
+				break;
+			case 2:
+				theater2 = local2[j][2];
+				gotoxy(50, 11);
+				break;
+			case 3:
+				theater2 = local2[j][3];
+				gotoxy(50, 11);
+				break;
+			case 4:
+				theater2 = local2[j][4];
+				gotoxy(50, 11);
+				break;
+			case 5:
+				theater2 = local2[j][5];
+				gotoxy(50, 11);
+				break;
+			}
+			m->setTheater(theater2);
+			break;
+		}
+	}
+	return 1;
+}
+
+void Choose_payment() {
+	int card_num;
+	int expiry_date;
+	int card_pw;
+	int legal_birth;
+
+	system("cls");
+
+	CursorView(0);
+
+		DrawLineTop();
+		gotoxy(38, 3);
+		cout << "☆결제 화면☆";
+
+		DrawLineBottom();
+		
+		gotoxy(34, 10);
+		cout << "청소년	"<<m->getTeenager()<<"매";
+		gotoxy(34, 11);
+		cout << "성인		"<<m->getAdult()<<"매";
+		gotoxy(34, 12);
+		cout << "우대		"<<m->getUdae()<<"매";
+
+		gotoxy(33, 15);
+		cout << " 결제 금액 : "<<m->getTotalPrice()<<"원";
+
+		gotoxy(33, 18);
+		cout << "카드번호 >>";
+		gotoxy(45, 18);
+		cin >> card_num;
+
+		gotoxy(33, 21);
+		cout << "유효기간 >>";
+		gotoxy(45, 21);
+		cin >> expiry_date;
+
+		gotoxy(33, 24);
+		cout << "비밀번호 >>   **";
+		gotoxy(45, 24);
+		cin >> card_pw;
+
+		gotoxy(33, 27);
+		cout << "법정생일(6자리)>>";
+		gotoxy(51, 27);
+		cin >> legal_birth;
+
+		system("cls");
+		Show_Loading();
+}
+
+void Show_Loading() {
+	system("cls");
+
+	CursorView(0);
+
+	gotoxy(36, 15);
+	cout << "* 결제 중... *";
+	gotoxy(38, 17);
+	cout << "□□□□□";
+	Sleep(500);
+	gotoxy(38, 17);
+	cout << "■";
+	Sleep(500);
+	gotoxy(38, 17);
+	cout << "■■";
+	Sleep(500);
+	gotoxy(38, 17);
+	cout << "■■■";
+	Sleep(500);
+	gotoxy(38, 17);
+	cout << "■■■■";
+	Sleep(500);
+	gotoxy(31, 15);
+	cout << "* 결제가 완료되었습니다! *";
+	gotoxy(38, 17);
+	cout << "■■■■■";
+	Sleep(1000);
+
+	system("cls");
+	gotoxy(34, 15);
+	cout << "* 영수증 출력 중... *";
+	gotoxy(38, 17);
+	cout << "□□□□□";
+	Sleep(500);
+	gotoxy(38, 17);
+	cout << "■";
+	Sleep(500);
+	gotoxy(38, 17);
+	cout << "■■";
+	Sleep(500);
+	gotoxy(38, 17);
+	cout << "■■■";
+	Sleep(500);
+	gotoxy(38, 17);
+	cout << "■■■■";
+	Sleep(500);
+	gotoxy(27, 15);
+	cout << "* 영수증 출력이 완료되었습니다! *";
+	gotoxy(38, 17);
+	cout << "■■■■■";
+
+	Sleep(500);
+	print();
+}
+
+void print() {
+	system("cls");
+	CursorView(0);
+
+	srand((unsigned int)time(NULL));
+
+	int num = (rand() % 4) + 1;
+	string ReserNum[] = { "K1562H561", "J9843T18614", "E1896W5131", "Q174R5461", "G15646M115" };
+
+	ofstream out("ticket.txt");
+
+	DrawLineTop();
+	gotoxy(38, 3);
+	cout << "☆영수증 확인☆";
+	DrawLineBottom2();
+
+	gotoxy(37, 10);
+	cout << "◈ Movie Ticket ◈";
+	out << "◈ Movie Ticket ◈" << endl;
+
+	gotoxy(33, 14);
+	cout << "영화 제목 : "<<m->getTitle();
+	out << "영화 제목 : " << m->getTitle() << endl;
+
+	gotoxy(33, 17);
+	cout << "극장 : "<<m->getArea()<<"  "<<m->getTheater();
+	out << "극장 : " << m->getArea() << "    "<< m->getTheater() << endl;
+
+	gotoxy(33, 20);
+	cout << "날짜 : "<<m->getMonth()<<"월"<<m->getDate()<<"일";
+	out << "날짜 : " << m->getMonth() << "월" << m->getDate() << "일" << endl;
+
+	gotoxy(33, 23);
+	cout << "가격 : "<<m->getTotalPrice()<<"원";
+	out << "가격 : " << m->getTotalPrice() << "원" << endl;
+
+	gotoxy(33, 26);
+	cout << "관람 인원 : "<<m->getP_Total()<<"명";
+	out << "관람 인원 : " << m->getP_Total() << "명" << endl;
+
+	gotoxy(33, 29);
+	cout << "좌석 : ";
+	out << "좌석 : ";
+	for (int i = 0; i < m->getP_Total(); i++) {
+		cout << (char)m->getSeat(i)<<m->getColnum(i)<<"  ";
+		out << (char)m->getSeat(i) << m->getColnum(i) << "  ";
+	}
+	out << "\n";
+
+	gotoxy(33, 32);
+	cout << "예매 번호 : " << ReserNum[num];
+	out << "예매 번호 : " << ReserNum[num] << endl;
+	out << "-즐거운 관람하세요~!-" << endl;
+
+	gotoxy(15, 35);
+	cout << "솔루션 탐색기 'Movie' > 파일탐색기 폴더 열기 > ticket.txt 확인";
+
+	out.close();
+
+	system("pause>null");
 }
 
 int compute(int teenager, int adult, int udea) {
