@@ -38,6 +38,7 @@ public:
 	int getTel();
 	int getPw();
 
+
 	virtual ~member();
 private:
 	int birth;
@@ -60,6 +61,4 @@ private:
 
 	int p_total;
 	int total_price;
-	
 };
-

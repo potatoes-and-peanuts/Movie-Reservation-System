@@ -13,13 +13,13 @@ int main(void) {
 
 	SetConsoleView();
 	intro();
-	CtheaterObject();
-	join();
-	theater();
-	Choose_date();
-	Choose_movie();
+	//CtheaterObject();
+	//join();
+	//theater();
+	//Choose_date();
+	//Choose_movie();
 
-	print();
+	//print();
 
 	for (int i = 0; i < 9; i++) {
 		for (int j = 0; j < 15; j++) {
@@ -835,7 +835,7 @@ void Show_Loading() {
 	Sleep(500);
 	gotoxy(27, 15);
 	cout << "* 영수증 출력이 완료되었습니다! *";
-	gotoxy(37, 17);
+	gotoxy(38, 17);
 	cout << "■■■■■";
 	
 	Sleep(500);
@@ -1038,7 +1038,6 @@ void Choose_hour(int& x) {
 			ch = false;
 		}
 	}
-
 }
 
 int compute(int teenager, int adult, int udea) {

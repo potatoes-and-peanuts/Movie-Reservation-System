@@ -53,7 +53,7 @@ void DrawUserCursor4(int& y);
 void DrawUserCursor5(int& x);
 
 //intro.cpp
-int intro();
+void intro();
 
 //theater.cpp
 int theater();

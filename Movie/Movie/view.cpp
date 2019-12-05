@@ -146,6 +146,11 @@ void DrawLineBottom3() { //시간 선택 화면 디자인을 위한 테두리선
 	gotoxy(0, 0);
 }
 
+void textcolor(int color_number) //출력텍스트 컬러 변경
+{
+	SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), color_number);
+}
+
 void CursorView(char show)//커서숨기기
 {
 	HANDLE hConsole;
