@@ -19,8 +19,6 @@ int main(void) {
 	Choose_date();
 	Choose_movie();
 
-	print();
-
 	for (int i = 0; i < 9; i++) {
 		for (int j = 0; j < 15; j++) {
 			delete blackmoney[i][j];
@@ -71,8 +69,8 @@ void join() {
 	CursorView(0);
 
 	DrawLineTop();
-	gotoxy(38, 3);
-	cout << "☆간편 로그인☆";
+	gotoxy(37, 3);
+	cout << "☆비회원 로그인☆";
 
 	while (ch) {
 		DrawLineBottom();
@@ -638,6 +636,89 @@ void View_Review(int y) {
 	}
 	system("pause>null");
 }
+void Choose_hour(int& x) {
+	bool ch = true;
+	int cnt = 0, key = 0, width = 0;
+	string area, theater, hour[3], title;
+	area = m->getArea();
+	theater = m->getTheater();
+	title = m->getTitle();
+
+	switch (x / 2)
+	{
+	case 0: {
+		for (int i = 0; i < 9; i++)
+			for (int j = 0; j < 15; j++) {
+				if (area == frozen2[i][j]->getTheater1() && theater == frozen2[i][j]->getTheater2()) {
+					hour[cnt] = frozen2[i][j]->getHour();
+					/*gotoxy((cnt+1) * 20, 20);
+					cout << hour[cnt];*/
+					cnt++;
+				}
+			}
+	}break;//겨울왕국2를 선택했다는 뜻
+	case 1: {
+		for (int i = 0; i < 9; i++)
+			for (int j = 0; j < 15; j++) {
+				if (area == blackmoney[i][j]->getTheater1() && theater == blackmoney[i][j]->getTheater2()) {
+					hour[cnt] = blackmoney[i][j]->getHour();
+					cnt++;
+				}
+			}
+	}break; //블랙머니
+	case 2: {
+		for (int i = 0; i < 9; i++)
+			for (int j = 0; j < 15; j++) {
+				if (area == JiYoung_82[i][j]->getTheater1() && theater == JiYoung_82[i][j]->getTheater2()) {
+					hour[cnt] = JiYoung_82[i][j]->getHour();
+					cnt++;
+				}
+			}
+	}break;//82년생 김지영
+	}
+
+	system("cls");
+	DrawLineTop();
+	gotoxy(41, 3);
+	cout << "☆시간 선택☆";
+
+	while (ch) {
+
+		DrawLineBottom3();
+
+		gotoxy(16, 14);
+		cout << title;
+		gotoxy(40, 14);
+		cout << title;
+		gotoxy(63, 14);
+		cout << title;
+
+		gotoxy(16, 17);
+		cout << hour[0];
+		gotoxy(40, 17);
+		cout << hour[1];
+		gotoxy(63, 17);
+		cout << hour[2];
+
+		DrawUserCursor5(width);
+
+		key = _getch();
+		switch (key) {
+		case RIGHT:
+			width += 23;
+			break;
+		case LEFT:
+			width -= 23;
+			break;
+		}
+
+		if (key == ENTER) {
+			m->setHour(hour[width / 23]);
+			Choose_seat();
+			ch = false;
+		}
+	}
+}
 
 int theater() {
 	string theater1;
@@ -656,7 +737,7 @@ int theater() {
 
 	int x = 0;
 	int key = 0;
-	int j;
+	int j=0;
 
 	DrawLineTop();
 	gotoxy(38, 2);
@@ -791,61 +872,6 @@ int theater() {
 	}
 	return 1;
 }
-void Show_Loading() {
-	system("cls");
-
-	CursorView(0);
-
-	gotoxy(36, 15);
-	cout << "* 결제 중... *";
-	gotoxy(38, 17);
-	cout << "□□□□□";
-	Sleep(500);
-	gotoxy(38, 17);
-	cout << "■";
-	Sleep(500);
-	gotoxy(38, 17);
-	cout << "■■";
-	Sleep(500);
-	gotoxy(38, 17);
-	cout << "■■■";
-	Sleep(500);
-	gotoxy(38, 17);
-	cout << "■■■■";
-	Sleep(500);
-	gotoxy(31, 15);
-	cout << "* 결제가 완료되었습니다! *";
-	gotoxy(37, 17);
-	cout << "■■■■■";
-	Sleep(1000);
-
-	system("cls");
-	gotoxy(34, 15);
-	cout << "* 영수증 출력 중... *";
-	gotoxy(38, 17);
-	cout << "□□□□□";
-	Sleep(500);
-	gotoxy(38, 17);
-	cout << "■";
-	Sleep(500);
-	gotoxy(38, 17);
-	cout << "■■";
-	Sleep(500);
-	gotoxy(38, 17);
-	cout << "■■■";
-	Sleep(500);
-	gotoxy(38, 17);
-	cout << "■■■■";
-	Sleep(500);
-	gotoxy(27, 15);
-	cout << "* 영수증 출력이 완료되었습니다! *";
-	gotoxy(37, 17);
-	cout << "■■■■■";
-	
-	Sleep(500);
-	print();
-
-}
 
 void Choose_payment() {
 	int card_num;
@@ -895,6 +921,61 @@ void Choose_payment() {
 
 		system("cls");
 		Show_Loading();
+}
+
+void Show_Loading() {
+	system("cls");
+
+	CursorView(0);
+
+	gotoxy(36, 15);
+	cout << "* 결제 중... *";
+	gotoxy(38, 17);
+	cout << "□□□□□";
+	Sleep(500);
+	gotoxy(38, 17);
+	cout << "■";
+	Sleep(500);
+	gotoxy(38, 17);
+	cout << "■■";
+	Sleep(500);
+	gotoxy(38, 17);
+	cout << "■■■";
+	Sleep(500);
+	gotoxy(38, 17);
+	cout << "■■■■";
+	Sleep(500);
+	gotoxy(31, 15);
+	cout << "* 결제가 완료되었습니다! *";
+	gotoxy(38, 17);
+	cout << "■■■■■";
+	Sleep(1000);
+
+	system("cls");
+	gotoxy(34, 15);
+	cout << "* 영수증 출력 중... *";
+	gotoxy(38, 17);
+	cout << "□□□□□";
+	Sleep(500);
+	gotoxy(38, 17);
+	cout << "■";
+	Sleep(500);
+	gotoxy(38, 17);
+	cout << "■■";
+	Sleep(500);
+	gotoxy(38, 17);
+	cout << "■■■";
+	Sleep(500);
+	gotoxy(38, 17);
+	cout << "■■■■";
+	Sleep(500);
+	gotoxy(27, 15);
+	cout << "* 영수증 출력이 완료되었습니다! *";
+	gotoxy(38, 17);
+	cout << "■■■■■";
+
+	Sleep(500);
+	print();
 }
 
 void print() {
@@ -957,92 +1038,6 @@ void print() {
 	out.close();
 
 	system("pause>null");
-
-}
-
-void Choose_hour(int& x) {
-	bool ch = true;
-	int cnt = 0, key = 0, width = 0;
-	string area, theater, hour[3], title;
-	area = m->getArea();
-	theater = m->getTheater();
-	title = m->getTitle();
-
-	switch (x / 2)
-	{
-	case 0: {
-		for (int i = 0; i < 9; i++)
-			for (int j = 0; j < 15; j++) {
-				if (area == frozen2[i][j]->getTheater1() && theater == frozen2[i][j]->getTheater2()) {
-					hour[cnt] = frozen2[i][j]->getHour();
-					/*gotoxy((cnt+1) * 20, 20);
-					cout << hour[cnt];*/
-					cnt++;
-				}
-			}
-	}break;//겨울왕국2를 선택했다는 뜻
-	case 1: {
-		for (int i = 0; i < 9; i++)
-			for (int j = 0; j < 15; j++) {
-				if (area == blackmoney[i][j]->getTheater1() && theater == blackmoney[i][j]->getTheater2()) {
-					hour[cnt] = blackmoney[i][j]->getHour();
-					cnt++;
-				}
-			}
-	}break; //블랙머니
-	case 2: {
-		for (int i = 0; i < 9; i++)
-			for (int j = 0; j < 15; j++) {
-				if (area == JiYoung_82[i][j]->getTheater1() && theater == JiYoung_82[i][j]->getTheater2()) {
-					hour[cnt] = JiYoung_82[i][j]->getHour();
-					cnt++;
-				}
-			}
-	}break;//82년생 김지영
-	}
-
-	system("cls");
-	DrawLineTop();
-	gotoxy(41, 3);
-	cout << "☆시간 선택☆";
-
-	while (ch) {
-
-		DrawLineBottom3();
-
-		gotoxy(16, 14);
-		cout << title;
-		gotoxy(40, 14);
-		cout << title;
-		gotoxy(63, 14);
-		cout << title;
-
-		gotoxy(16, 17);
-		cout << hour[0];
-		gotoxy(40, 17);
-		cout << hour[1];
-		gotoxy(63, 17);
-		cout << hour[2];
-
-		DrawUserCursor5(width);
-
-		key = _getch();
-		switch (key) {
-		case RIGHT:
-			width += 23;
-			break;
-		case LEFT:
-			width -= 23;
-			break;
-		}
-
-		if (key == ENTER) {
-			m->setHour(hour[width / 23]);
-			Choose_seat();
-			ch = false;
-		}
-	}
-
 }
 
 int compute(int teenager, int adult, int udea) {

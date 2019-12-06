@@ -16,28 +16,9 @@ using namespace std;
 
 #define COL                   GetStdHandle(STD_OUTPUT_HANDLE)        // 콘솔창의 핸들정보 받기
 
-// color상수 지정 
-#define BLACK 0 
-#define BLUE 1 
-#define GREEN 2 
-#define CYAN 3 
-#define RED 4 
-#define MAGENTA 5 
-#define BROWN 6 
-#define LIGHTGRAY 7 
-#define DARKGRAY 8 
-#define LIGHTBLUE 9 
-#define LIGHTGREEN 10 
-#define LIGHTCYAN 11 
-#define LIGHTRED 12 
-#define LIGHTMAGENTA 13 
-#define YELLOW 14 
-#define WHITE 15 
-
 //view.cpp
 void SetConsoleView();
 void gotoxy(int x, int y);
-void textcolor(int foreground, int background);
 
 void DrawLineTop();
 void DrawLineBottom();
@@ -53,16 +34,16 @@ void DrawUserCursor4(int& y);
 void DrawUserCursor5(int& x);
 
 //intro.cpp
-int intro();
-
-//theater.cpp
-int theater();
+void intro();
 
 //main.cpp
 void CtheaterObject();
 
 void join();
 
+int theater();
+
+void Choose_hour(int& x);
 void Choose_date();
 int Choose_seat();
 void Choose_movie();
@@ -75,7 +56,5 @@ void Choose_payment();
 void Show_Loading();
 
 void print();
-
-void Choose_hour(int& x);
 
 int compute(int teenager, int adult, int udea);

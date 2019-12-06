@@ -1,5 +1,4 @@
 #pragma once
-
 static int cnt=0, cnt2=0;
 
 class member
@@ -7,7 +6,6 @@ class member
 public:
 	member();
 	member(string birth, string tel, string pw);
-
 
 	void setArea(string area);
 	void setTheater(string theater);
@@ -60,6 +58,4 @@ private:
 
 	int p_total;
 	int total_price;
-	
 };
-

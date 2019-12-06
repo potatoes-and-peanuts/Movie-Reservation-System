@@ -151,7 +151,6 @@ string member::getPw()
 	return this->pw;
 }
 
-
 member::~member()
 {
 }
