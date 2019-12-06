@@ -53,7 +53,7 @@ void CtheaterObject() {
 			if (j % 3 == 0 && j != 0) {
 				cnt++;
 			}
-			blackmoney[i][j] = new movie("블랙머니", local1[i], local2[i][cnt], blackmoneyhour[j%3]);
+			blackmoney[i][j] = new movie("블랙머니", local1[i], local2[i][cnt], blackmoneyhour[j % 3]);
 			JiYoung_82[i][j] = new movie("82년생 김지영", local1[i], local2[i][cnt], Kim82hour[j % 3]);
 			frozen2[i][j] = new movie("겨울왕국2", local1[i], local2[i][cnt], frozen2hour[j % 3]);
 		}
@@ -280,24 +280,16 @@ int Choose_seat() {
 	for (i = 0; i < 9; i++) {
 		gotoxy(8, 19 + i);
 		for (j = 0; j < 3; j++)
-			if (seat[i][j] == 0)
 				cout << "□ ";
-			else if (seat[i][j] == 15)
-				cout << "■ ";
 		cout << "   ";
 
 		for (j = 3; j < 10; j++)
-			if (seat[i][j] == 0)
 				cout << "□ ";
-			else if (seat[i][j] == 15)
-				cout << "■ ";
 		cout << "   ";
 
 		for (j = 10; j < 13; j++)
-			if (seat[i][j] == 0)
 				cout << "□ ";
-			else if (seat[i][j] == 15)
-				cout << "■ ";
+	
 		cout << "\n" << endl;
 	}
 
