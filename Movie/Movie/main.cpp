@@ -12,7 +12,7 @@ member* m;
 int main(void) {
 
 	SetConsoleView();
-	//intro();
+	intro();
 	CtheaterObject();
 	join();
 	theater();
