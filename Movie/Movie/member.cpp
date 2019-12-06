@@ -5,7 +5,7 @@ member::member()
 {
 }
 
-member::member(int birth, int tel, int pw)
+member::member(string birth, string tel, string pw)
 {
 	this->birth = birth;
 	this->tel = tel;
@@ -136,17 +136,17 @@ int member::getDate()
 	return this->date;
 }
 
-int member::getBirth()
+string member::getBirth()
 {
 	return this->birth;
 }
 
-int member::getTel()
+string member::getTel()
 {
 	return this->tel;
 }
 
-int member::getPw()
+string member::getPw()
 {
 	return this->pw;
 }

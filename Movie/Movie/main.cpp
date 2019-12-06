@@ -12,7 +12,7 @@ member* m;
 int main(void) {
 
 	SetConsoleView();
-	intro();
+	//intro();
 	CtheaterObject();
 	join();
 	theater();
@@ -64,7 +64,7 @@ void CtheaterObject() {
 
 
 void join() {
-	int birth, tel, pw;
+	string birth, tel, pw;
 	char check;
 	bool ch = true;
 
@@ -368,7 +368,7 @@ int Choose_seat() {
 		cout << "원하는 좌석의 열(번호) :      ";
 
 		gotoxy(83, 20);
-		cin >> &row;
+		cin >> row;
 
 		//알파벳 대문자가 아닐 때
 		if (row <= 64 || row >= 74) {
@@ -716,9 +716,13 @@ int theater() {
 				j = 6;
 				theater1 = local1[6];
 				break;
+			case 7:
+				j = 7;
+				theater1 = local1[7];
+				break;
 			case 8:
 				j = 8;
-				theater1 = local1[7];
+				theater1 = local1[8];
 				break;
 			}
 			m->setArea(theater1);
