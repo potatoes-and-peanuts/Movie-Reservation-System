@@ -16,6 +16,8 @@
 <img src="https://user-images.githubusercontent.com/48242362/87904761-f9ebab00-ca99-11ea-8984-cc9ea1b82727.png"></img>
 * 영화 줄거리 화면
 <img src="https://user-images.githubusercontent.com/48242362/87904762-fa844180-ca99-11ea-8c0e-5f03285a2daa.png"></img>
+* 영화 리뷰 화면<br>
+<img src="https://user-images.githubusercontent.com/48242362/87906489-ac713d00-ca9d-11ea-9cd5-f80682fe699f.png" width="900px"></img>
 * 영화 상영 시각 선택 화면
 <img src="https://user-images.githubusercontent.com/48242362/87904763-fa844180-ca99-11ea-86c0-9c4c1e39c278.png"></img>
 * 영화 좌석 선택 화면<br>
