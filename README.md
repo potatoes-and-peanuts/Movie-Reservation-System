@@ -2,7 +2,7 @@
 영화 예매 프로그램 : MOVIE BOX
 
 ## Screenshot
-* 메인화면
+* 메인화면<br>
 <img src="https://user-images.githubusercontent.com/48242362/87904751-f821e780-ca99-11ea-93be-2b7b7a2c168d.png"></img>
 * 비회원 로그인 화면
 <img src="https://user-images.githubusercontent.com/48242362/87904755-f8ba7e00-ca99-11ea-9813-3e2a0935b2b3.png"></img>
