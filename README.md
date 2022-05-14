@@ -1,6 +1,7 @@
 # Movie-Reservation-System
 영화 예매 프로그램 : MOVIE BOX
 
+<!-- 
 ## Screenshot
 * 메인화면<br>
 <img src="https://user-images.githubusercontent.com/48242362/87904751-f821e780-ca99-11ea-93be-2b7b7a2c168d.png"></img>
@@ -28,7 +29,7 @@
 * 결제 로딩 화면
 <img src="https://user-images.githubusercontent.com/48242362/87904773-fc4e0500-ca99-11ea-994c-a30aba015c2a.png"></img>
 * 결제 확인 화면
-<img src="https://user-images.githubusercontent.com/48242362/87904770-fbb56e80-ca99-11ea-8eab-c700894709a0.png"></img>
+<img src="https://user-images.githubusercontent.com/48242362/87904770-fbb56e80-ca99-11ea-8eab-c700894709a0.png"></img> -->
 
 ## Built With
 * C++
